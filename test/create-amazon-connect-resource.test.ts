@@ -1,17 +1,20 @@
-// import * as cdk from 'aws-cdk-lib';
-// import { Template } from 'aws-cdk-lib/assertions';
-// import * as CreateAmazonConnectResource from '../lib/create-amazon-connect-resource-stack';
+import * as cdk from 'aws-cdk-lib';
+import { Template } from 'aws-cdk-lib/assertions';
+import { CreateAmazonConnectResourceStack } from '../lib/create-amazon-connect-resource-stack';
 
-// example test. To run these tests, uncomment this file along with the
-// example resource in lib/create-amazon-connect-resource-stack.ts
-test('SQS Queue Created', () => {
-//   const app = new cdk.App();
-//     // WHEN
-//   const stack = new CreateAmazonConnectResource.CreateAmazonConnectResourceStack(app, 'MyTestStack');
-//     // THEN
-//   const template = Template.fromStack(stack);
+describe('CreateAmazonConnectResourceStack', () => {
+  test("matches the snapshot", () => {
+    const app = new cdk.App();
 
-//   template.hasResourceProperties('AWS::SQS::Queue', {
-//     VisibilityTimeout: 300
-//   });
+    const stack = new CreateAmazonConnectResourceStack(app, 'CreateAmazonConnectResourceStack-test', {
+      env: {
+        account: '000000000000',
+        region: 'us-east-1',
+      },
+      connectInstanceAlias: 'test',
+    });
+
+    const template = Template.fromStack(stack);
+    expect(template.toJSON()).toMatchSnapshot();
+  });
 });

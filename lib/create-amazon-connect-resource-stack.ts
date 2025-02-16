@@ -1,16 +1,27 @@
 import * as cdk from 'aws-cdk-lib';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import { AmazonConnectConstruct } from './amazon-connect-construct';
+
+interface CreateAmazonConnectResourceStackProps extends cdk.StackProps {
+  connectInstanceAlias: string
+}
 
 export class CreateAmazonConnectResourceStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+  private props: CreateAmazonConnectResourceStackProps;
+
+  constructor(scope: Construct, id: string, props: CreateAmazonConnectResourceStackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const recordingBucket = new s3.Bucket(this, 'RecordingBucket', {
+      bucketName: props.connectInstanceAlias,
+      encryption: s3.BucketEncryption.S3_MANAGED
+    });
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'CreateAmazonConnectResourceQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    new AmazonConnectConstruct(this, 'AmazonConnectConstruct', {
+      connectInstanceAlias: props.connectInstanceAlias,
+      recordingBucket
+    });
   }
 }

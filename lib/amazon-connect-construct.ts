@@ -8,18 +8,18 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 interface AmazonConnectConstructProps {
   connectInstanceAlias: string;
   recordingBucket: s3.Bucket;
-  isCreateHierarchy: boolean;
 }
 
 export class AmazonConnectConstruct extends Construct {
   private readonly recordingBucket: s3.Bucket;
+  readonly connectInstance: connect.CfnInstance;
 
   constructor(scope: Construct, id: string, props: AmazonConnectConstructProps) {
     super(scope, id);
 
     this.recordingBucket = props.recordingBucket;
 
-    const connectInstance = new connect.CfnInstance(this, id, {
+    this.connectInstance = new connect.CfnInstance(this, id, {
       attributes: {
         inboundCalls: true,
         outboundCalls: true,
@@ -31,11 +31,7 @@ export class AmazonConnectConstruct extends Construct {
     });
     props.recordingBucket.grantWrite(new iam.ServicePrincipal('connect.amazonaws.com'));
 
-    this.createInstanceStorageConfig(connectInstance);
-
-    if (props.isCreateHierarchy) {
-      this.createHierarchy(connectInstance);
-    }
+    this.createInstanceStorageConfig(this.connectInstance);
   }
 
   createInstanceStorageConfig(connectInstance: connect.CfnInstance) {
@@ -69,48 +65,6 @@ export class AmazonConnectConstruct extends Construct {
           keyId: encriptionKey.keyArn
         }
       }
-    });
-  }
-
-  createHierarchy(connectInstance: connect.CfnInstance) {
-    new connect.CfnUserHierarchyStructure(this, 'DepartmentUserHierarchyStructure', {
-      instanceArn: connectInstance.attrArn,
-      userHierarchyStructure: {
-        levelOne: {
-          name: 'Department',
-        },
-        levelTwo: {
-          name: 'Team',
-        }
-      }
-    })
-
-    const salesDepartment = new connect.CfnUserHierarchyGroup(this, 'SalesDepartmentContactUserHierarchyGroup', {
-      instanceArn: connectInstance.attrArn,
-      name: 'Sales department',
-    });
-
-    new connect.CfnUserHierarchyGroup(this, 'SalesDepartmentTeam1ContactUserHierarchyGroup', {
-      instanceArn: connectInstance.attrArn,
-      name: 'Team 1',
-      parentGroupArn: salesDepartment.attrUserHierarchyGroupArn
-    });
-
-    new connect.CfnUserHierarchyGroup(this, 'SalesDepartmentTeam2ContactUserHierarchyGroup', {
-      instanceArn: connectInstance.attrArn,
-      name: 'Team 2',
-      parentGroupArn: salesDepartment.attrUserHierarchyGroupArn
-    });
-
-    const supportDepartment = new connect.CfnUserHierarchyGroup(this, 'SupportDepartmentContactUserHierarchyGroup', {
-      instanceArn: connectInstance.attrArn,
-      name: 'Support department',
-    });
-
-    new connect.CfnUserHierarchyGroup(this, 'SupportDepartmentTeam1ContactUserHierarchyGroup', {
-      instanceArn: connectInstance.attrArn,
-      name: 'Team 1',
-      parentGroupArn: supportDepartment.attrUserHierarchyGroupArn
     });
   }
 }

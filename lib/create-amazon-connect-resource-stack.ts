@@ -3,6 +3,7 @@ import * as s3 from 'aws-cdk-lib/aws-s3';
 
 import { Construct } from 'constructs';
 import { AmazonConnectConstruct } from './amazon-connect-construct';
+import { AmazonConnectContentConstruct } from './amazon-connect-content-construct';
 
 interface CreateAmazonConnectResourceStackProps extends cdk.StackProps {
   connectInstanceAlias: string;
@@ -18,10 +19,14 @@ export class CreateAmazonConnectResourceStack extends cdk.Stack {
       encryption: s3.BucketEncryption.S3_MANAGED
     });
 
-    new AmazonConnectConstruct(this, 'AmazonConnectConstruct', {
+    const amazonConnect = new AmazonConnectConstruct(this, 'AmazonConnectConstruct', {
       connectInstanceAlias: props.connectInstanceAlias,
       recordingBucket,
-      isCreateHierarchy: props.isCreateHierarchy,
+    });
+
+    new AmazonConnectContentConstruct(this, 'AmazonConnectContentConstruct', {
+      connectInstanceArn: amazonConnect.connectInstance.attrArn,
+      isCreateHierarchy: props.isCreateHierarchy
     });
   }
 }

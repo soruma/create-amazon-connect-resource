@@ -12,6 +12,7 @@ describe('CreateAmazonConnectResourceStack', () => {
         region: 'us-east-1',
       },
       connectInstanceAlias: 'test',
+      isCreateHierarchy: true,
     });
 
     const template = Template.fromStack(stack);

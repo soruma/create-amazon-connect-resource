@@ -91,6 +91,103 @@ exports[`CreateAmazonConnectResourceStack matches the snapshot 1`] = `
       },
       "Type": "AWS::Connect::InstanceStorageConfig",
     },
+    "AmazonConnectConstructDepartmentUserHierarchyStructure2BCCB13B": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "UserHierarchyStructure": {
+          "LevelOne": {
+            "Name": "Department",
+          },
+          "LevelTwo": {
+            "Name": "Team",
+          },
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyStructure",
+    },
+    "AmazonConnectConstructSalesDepartmentContactUserHierarchyGroupC8C9EA84": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Sales department",
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "AmazonConnectConstructSalesDepartmentTeam1ContactUserHierarchyGroup3F5E18C8": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Team 1",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructSalesDepartmentContactUserHierarchyGroupC8C9EA84",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "AmazonConnectConstructSalesDepartmentTeam2ContactUserHierarchyGroup90C3B7E0": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Team 2",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructSalesDepartmentContactUserHierarchyGroupC8C9EA84",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "AmazonConnectConstructSupportDepartmentContactUserHierarchyGroup392AFB87": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Support department",
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "AmazonConnectConstructSupportDepartmentTeam1ContactUserHierarchyGroup6F329B7B": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Team 1",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructSupportDepartmentContactUserHierarchyGroup392AFB87",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
     "RecordingBucket03AEF6D2": {
       "DeletionPolicy": "Retain",
       "Properties": {

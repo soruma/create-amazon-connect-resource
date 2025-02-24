@@ -5,12 +5,11 @@ import { Construct } from 'constructs';
 import { AmazonConnectConstruct } from './amazon-connect-construct';
 
 interface CreateAmazonConnectResourceStackProps extends cdk.StackProps {
-  connectInstanceAlias: string
+  connectInstanceAlias: string;
+  isCreateHierarchy: boolean;
 }
 
 export class CreateAmazonConnectResourceStack extends cdk.Stack {
-  private props: CreateAmazonConnectResourceStackProps;
-
   constructor(scope: Construct, id: string, props: CreateAmazonConnectResourceStackProps) {
     super(scope, id, props);
 
@@ -21,7 +20,8 @@ export class CreateAmazonConnectResourceStack extends cdk.Stack {
 
     new AmazonConnectConstruct(this, 'AmazonConnectConstruct', {
       connectInstanceAlias: props.connectInstanceAlias,
-      recordingBucket
+      recordingBucket,
+      isCreateHierarchy: props.isCreateHierarchy,
     });
   }
 }

@@ -37,5 +37,22 @@ describe('CreateAmazonConnectResourceStack', () => {
       const template = Template.fromStack(stack);
       expect(template.toJSON()).toMatchSnapshot();
     });
+
+    test('Create hierarchy, not create data storage', () => {
+      const app = new cdk.App();
+
+      const stack = new CreateAmazonConnectResourceStack(app, 'CreateAmazonConnectResourceStack-test', {
+        env: {
+          account: '000000000000',
+          region: 'us-east-1',
+        },
+        connectInstanceAlias: 'test',
+        isCreateDataStorageBucket: false,
+        isCreateHierarchy: true,
+      });
+
+      const template = Template.fromStack(stack);
+      expect(template.toJSON()).toMatchSnapshot();
+    });
   });
 });

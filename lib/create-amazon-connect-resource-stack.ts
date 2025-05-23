@@ -7,6 +7,7 @@ import { AmazonConnectContentConstruct } from './amazon-connect-content-construc
 
 interface CreateAmazonConnectResourceStackProps extends cdk.StackProps {
   connectInstanceAlias: string;
+  isCreateDataStorageBucket: boolean;
   isCreateHierarchy: boolean;
 }
 

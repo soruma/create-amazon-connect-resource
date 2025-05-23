@@ -7,6 +7,8 @@ import { CreateAmazonConnectResourceStack } from '../lib/create-amazon-connect-r
 const app = new cdk.App();
 
 const connectInstanceAlias = app.node.tryGetContext('connectInstanceAlias');
+const isCreateDataStorageBucketStr = app.node.tryGetContext('isCreateHierarchy');
+const isCreateDataStorageBucket = isCreateDataStorageBucketStr ? stringToBooleanStrict(isCreateDataStorageBucketStr) : true;
 const isCreateHierarchyStr = app.node.tryGetContext('isCreateHierarchy');
 const isCreateHierarchy = isCreateHierarchyStr ? stringToBooleanStrict(isCreateHierarchyStr) : false;
 
@@ -20,5 +22,6 @@ new CreateAmazonConnectResourceStack(app, `AmazonConnectResourceStack-${connectI
     region: process.env.CDK_DEFAULT_REGION
   },
   connectInstanceAlias,
-  isCreateHierarchy
+  isCreateDataStorageBucket,
+  isCreateHierarchy,
 });

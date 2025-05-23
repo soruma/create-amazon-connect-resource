@@ -14,7 +14,7 @@ interface AmazonConnectConstructProps {
   /**
    * Amazon connect data storage
    */
-  dataStorageBucket: s3.Bucket;
+  dataStorageBucket: s3.Bucket | undefined;
 }
 
 export class AmazonConnectConstruct extends Construct {
@@ -36,12 +36,17 @@ export class AmazonConnectConstruct extends Construct {
       identityManagementType: 'CONNECT_MANAGED',
       instanceAlias: this.props.connectInstanceAlias,
     });
-    props.dataStorageBucket.grantWrite(new iam.ServicePrincipal('connect.amazonaws.com'));
 
-    this.createInstanceStorageConfig(this.connectInstance);
+    if (this.props.dataStorageBucket !== undefined) {
+      this.props.dataStorageBucket.grantWrite(new iam.ServicePrincipal('connect.amazonaws.com'));
+
+      this.createInstanceStorageConfig(this.connectInstance);
+    }
   }
 
   createInstanceStorageConfig(connectInstance: connect.CfnInstance) {
+    if (this.props.dataStorageBucket === undefined) return
+
     const encriptionKey = kms.Key.fromLookup(this, 'EncryptKeyLookup', {
       aliasName: 'alias/aws/connect',
     });

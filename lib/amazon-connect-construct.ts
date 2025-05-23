@@ -7,11 +7,38 @@ import * as connect from 'aws-cdk-lib/aws-connect';
 import * as kms from 'aws-cdk-lib/aws-kms';
 import * as iam from 'aws-cdk-lib/aws-iam';
 
+export type IdentityManagementType = 'SAML' | 'CONNECT_MANAGED' | 'EXISTING_DIRECTORY';
+
 interface AmazonConnectConstructProps {
   /**
    * Amazon Connect instance alias
    */
   connectInstanceAlias: string;
+
+  /**
+   * Mandatory element which enables inbound calls on new instance.
+   */
+  inboundCalls: boolean;
+
+  /**
+   * Mandatory element which enables outbound calls on new instance.
+   */
+  outboundCalls: boolean;
+
+  /**
+   * Boolean flag which enables CONTACTFLOW_LOGS on an instance.
+   */
+  contactflowLogs: boolean;
+
+  /**
+   * Boolean flag which enables AUTO_RESOLVE_BEST_VOICES on an instance.
+   */
+  autoResolveBestVoices: boolean;
+
+  /**
+   * The identity management type.
+   */
+  identityManagementType: IdentityManagementType;
 
   /**
    * Amazon connect data storage
@@ -40,12 +67,12 @@ export class AmazonConnectConstruct extends Construct {
 
     this.connectInstance = new connect.CfnInstance(this, id, {
       attributes: {
-        inboundCalls: true,
-        outboundCalls: true,
-        contactflowLogs: true,
-        autoResolveBestVoices: true,
+        inboundCalls: this.props.inboundCalls,
+        outboundCalls: this.props.outboundCalls,
+        contactflowLogs: this.props.contactflowLogs,
+        autoResolveBestVoices: this.props.autoResolveBestVoices,
       },
-      identityManagementType: 'CONNECT_MANAGED',
+      identityManagementType: this.props.identityManagementType,
       instanceAlias: this.props.connectInstanceAlias,
     });
 

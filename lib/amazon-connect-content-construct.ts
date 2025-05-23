@@ -5,7 +5,14 @@ import { Construct } from 'constructs';
 import { AmazonConnectContentHierarchyGroupStack } from './amazon-connect-content-hierarchy-group-stack';
 
 interface AmazonConnectContentConstructProps {
+  /**
+   * Amazon Connect instance ARN
+   */
   connectInstanceArn: string;
+
+  /**
+   * Create sample Amazon Connect organization hierarchies
+   */
   createHierarchy: boolean;
 }
 

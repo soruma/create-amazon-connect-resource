@@ -18,6 +18,16 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 - `connectInstanceAlias` (String) **Required**
   - Amazon Connect instance alias
   - S3 Bucket name
+- `inboundCalls` (Boolean) Default: `true`
+  - Allow inbound Calls
+- `outboundCalls` (Boolean) Default: `true`
+  - Allow outbound Calls
+- `contactflowLogs` (Boolean) Default: `true`
+  - Outputs contact flow logs
+- `autoResolveBestVoices` (Boolean) Default: `true`
+  - Boolean flag which enables AUTO_RESOLVE_BEST_VOICES
+- `identityManagementType` (String) Default: `CONNECT_MANAGED`
+  - Identity management type(`SAML` | `CONNECT_MANAGED` | `EXISTING_DIRECTORY`)
 - `createDataStorageBucket` (Boolean) Default: `true`
   - Whether to store call and chat records in storage
 - `createBusinessHours` (Boolean) Default: `false`

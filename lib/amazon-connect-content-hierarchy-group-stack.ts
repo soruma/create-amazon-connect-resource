@@ -4,6 +4,9 @@ import * as connect from 'aws-cdk-lib/aws-connect';
 import { Construct } from 'constructs';
 
 interface AmazonConnectContentHierarchyGroupProps {
+  /**
+   * Amazon Connect instance ARN
+   */
   connectInstanceArn: string;
 }
 

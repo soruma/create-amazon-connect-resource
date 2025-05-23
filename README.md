@@ -20,6 +20,10 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
   - S3 Bucket name
 - `createDataStorageBucket` (Boolean) Default: `true`
   - Whether to store call and chat records in storage
+- `createBusinessHours` (Boolean) Default: `false`
+  - Whether to create business hours
+- `businessHoursTimeZone` (String) Deault: `UTC`
+  - Business hours time zone
 - `createHierarchy` (Boolean) Default: `false`
   - Create sample Amazon Connect organization hierarchies
 
@@ -27,7 +31,9 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 - Amazon Connect
   - Instance name is `${connectInstanceAlias}`
-  - Hierarchy group  (optional)
+  - Business hours (optional)
+    - The business hours configuration file is `config/business_hours.json`
+  - Hierarchy group (optional)
 - S3 Bucket
   - Bucket name is `connect-${connectInstanceAlias}`
     - If `createDataStorageBucket` is `false`, it will not be create

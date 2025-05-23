@@ -9,6 +9,10 @@ const app = new cdk.App();
 const connectInstanceAlias = app.node.tryGetContext('connectInstanceAlias');
 const createDataStorageBucketStr = app.node.tryGetContext('createDataStorageBucket');
 const createDataStorageBucket = createDataStorageBucketStr ? stringToBooleanStrict(createDataStorageBucketStr) : true;
+const createBusinessHoursStr = app.node.tryGetContext('createBusinessHours');
+const createBusinessHours = createBusinessHoursStr ? stringToBooleanStrict(createBusinessHoursStr) : false;
+const businessHoursTimeZoneStr = app.node.tryGetContext('businessHoursTimeZone');
+const businessHoursTimeZone = businessHoursTimeZoneStr ? businessHoursTimeZoneStr : 'UTC';
 const createHierarchyStr = app.node.tryGetContext('createHierarchy');
 const createHierarchy = createHierarchyStr ? stringToBooleanStrict(createHierarchyStr) : false;
 
@@ -23,5 +27,7 @@ new CreateAmazonConnectResourceStack(app, `AmazonConnectResourceStack-${connectI
   },
   connectInstanceAlias,
   createDataStorageBucket,
+  createBusinessHours,
+  businessHoursTimeZone,
   createHierarchy,
 });

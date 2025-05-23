@@ -1,6 +1,176 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data storage and hierarchy 1`] = `
+exports[`CreateAmazonConnectResourceStack Matches the snapshot Create business hour and hierarchy, not create data storage 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AmazonConnectConstruct1C9DFEFB": {
+      "Properties": {
+        "Attributes": {
+          "AutoResolveBestVoices": true,
+          "ContactflowLogs": true,
+          "InboundCalls": true,
+          "OutboundCalls": true,
+        },
+        "IdentityManagementType": "CONNECT_MANAGED",
+        "InstanceAlias": "test",
+      },
+      "Type": "AWS::Connect::Instance",
+    },
+    "AmazonConnectConstructHoursOfOperation59BBFAA0": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "BusinessHour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "AmazonConnectContentConstructAmazonConnectContentHierarchyGroupStackNestedStackAmazonConnectContentHierarchyGroupStackNestedStackResource8A175594": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Parameters": {
+          "referencetoCreateAmazonConnectResourceStacktestAmazonConnectConstruct26581347Arn": {
+            "Fn::GetAtt": [
+              "AmazonConnectConstruct1C9DFEFB",
+              "Arn",
+            ],
+          },
+        },
+        "TemplateURL": {
+          "Fn::Join": [
+            "",
+            [
+              "https://s3.us-east-1.",
+              {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/e967c3688d53ed181107239495903d11cf6e9f98287c5cd4929dd5f3cbcc8fbb.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AmazonConnectContentConstructDepartmentUserHierarchyStructure9FF66031": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "UserHierarchyStructure": {
+          "LevelOne": {
+            "Name": "Department",
+          },
+          "LevelTwo": {
+            "Name": "Team",
+          },
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyStructure",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data storage and business hour, hierarchy 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -91,6 +261,103 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
       },
       "Type": "AWS::Connect::InstanceStorageConfig",
     },
+    "AmazonConnectConstructHoursOfOperation59BBFAA0": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "BusinessHour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "AmazonConnectContentConstructAmazonConnectContentHierarchyGroupStackNestedStackAmazonConnectContentHierarchyGroupStackNestedStackResource8A175594": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Parameters": {
+          "referencetoCreateAmazonConnectResourceStacktestAmazonConnectConstruct26581347Arn": {
+            "Fn::GetAtt": [
+              "AmazonConnectConstruct1C9DFEFB",
+              "Arn",
+            ],
+          },
+        },
+        "TemplateURL": {
+          "Fn::Join": [
+            "",
+            [
+              "https://s3.us-east-1.",
+              {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/e967c3688d53ed181107239495903d11cf6e9f98287c5cd4929dd5f3cbcc8fbb.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
     "AmazonConnectContentConstructDepartmentUserHierarchyStructure9FF66031": {
       "Properties": {
         "InstanceArn": {
@@ -109,84 +376,6 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         },
       },
       "Type": "AWS::Connect::UserHierarchyStructure",
-    },
-    "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Sales department",
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
-    },
-    "AmazonConnectContentConstructSalesDepartmentTeam1ContactUserHierarchyGroup30989937": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Team 1",
-        "ParentGroupArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0",
-            "UserHierarchyGroupArn",
-          ],
-        },
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
-    },
-    "AmazonConnectContentConstructSalesDepartmentTeam2ContactUserHierarchyGroupEF342A91": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Team 2",
-        "ParentGroupArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0",
-            "UserHierarchyGroupArn",
-          ],
-        },
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
-    },
-    "AmazonConnectContentConstructSupportDepartmentContactUserHierarchyGroup2CBFBEC5": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Support department",
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
-    },
-    "AmazonConnectContentConstructSupportDepartmentTeam1ContactUserHierarchyGroup31C9D416": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Team 1",
-        "ParentGroupArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectContentConstructSupportDepartmentContactUserHierarchyGroup2CBFBEC5",
-            "UserHierarchyGroupArn",
-          ],
-        },
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
     },
     "DataStorageBucket1A195487": {
       "DeletionPolicy": "Retain",
@@ -286,7 +475,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
 }
 `;
 
-exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data storage, not create hierarchy 1`] = `
+exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data storage and business hour, not create hierarchy 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -376,6 +565,76 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         "StorageType": "S3",
       },
       "Type": "AWS::Connect::InstanceStorageConfig",
+    },
+    "AmazonConnectConstructHoursOfOperation59BBFAA0": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "BusinessHour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
     },
     "DataStorageBucket1A195487": {
       "DeletionPolicy": "Retain",
@@ -475,7 +734,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
 }
 `;
 
-exports[`CreateAmazonConnectResourceStack Matches the snapshot Create hierarchy, not create data storage 1`] = `
+exports[`CreateAmazonConnectResourceStack Matches the snapshot Not create data storage and hierarchy, business hour 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -497,103 +756,6 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create hierarchy,
         "InstanceAlias": "test",
       },
       "Type": "AWS::Connect::Instance",
-    },
-    "AmazonConnectContentConstructDepartmentUserHierarchyStructure9FF66031": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "UserHierarchyStructure": {
-          "LevelOne": {
-            "Name": "Department",
-          },
-          "LevelTwo": {
-            "Name": "Team",
-          },
-        },
-      },
-      "Type": "AWS::Connect::UserHierarchyStructure",
-    },
-    "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Sales department",
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
-    },
-    "AmazonConnectContentConstructSalesDepartmentTeam1ContactUserHierarchyGroup30989937": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Team 1",
-        "ParentGroupArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0",
-            "UserHierarchyGroupArn",
-          ],
-        },
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
-    },
-    "AmazonConnectContentConstructSalesDepartmentTeam2ContactUserHierarchyGroupEF342A91": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Team 2",
-        "ParentGroupArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0",
-            "UserHierarchyGroupArn",
-          ],
-        },
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
-    },
-    "AmazonConnectContentConstructSupportDepartmentContactUserHierarchyGroup2CBFBEC5": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Support department",
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
-    },
-    "AmazonConnectContentConstructSupportDepartmentTeam1ContactUserHierarchyGroup31C9D416": {
-      "Properties": {
-        "InstanceArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectConstruct1C9DFEFB",
-            "Arn",
-          ],
-        },
-        "Name": "Team 1",
-        "ParentGroupArn": {
-          "Fn::GetAtt": [
-            "AmazonConnectContentConstructSupportDepartmentContactUserHierarchyGroup2CBFBEC5",
-            "UserHierarchyGroupArn",
-          ],
-        },
-      },
-      "Type": "AWS::Connect::UserHierarchyGroup",
     },
   },
   "Rules": {

@@ -8,7 +8,9 @@ import { AmazonConnectContentConstruct } from './amazon-connect-content-construc
 interface CreateAmazonConnectResourceStackProps extends cdk.StackProps {
   connectInstanceAlias: string;
   createDataStorageBucket: boolean;
+  createBusinessHours: boolean;
   createHierarchy: boolean;
+  businessHoursTimeZone: string;
 }
 
 export class CreateAmazonConnectResourceStack extends cdk.Stack {
@@ -31,6 +33,8 @@ export class CreateAmazonConnectResourceStack extends cdk.Stack {
     const amazonConnect = new AmazonConnectConstruct(this, 'AmazonConnectConstruct', {
       connectInstanceAlias: this.props.connectInstanceAlias,
       dataStorageBucket,
+      createBusinessHours: this.props.createBusinessHours,
+      businessHoursTimeZone: this.props.businessHoursTimeZone
     });
 
     new AmazonConnectContentConstruct(this, 'AmazonConnectContentConstruct', {

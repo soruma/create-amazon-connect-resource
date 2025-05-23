@@ -42,15 +42,14 @@ interface CreateAmazonConnectResourceStackProps extends cdk.StackProps {
   identityManagementType: IdentityManagementType;
 
   /**
-   * Whether to create business hours
+   * The identifier for the directory.
    */
-  createBusinessHours: boolean;
+  directoryId?: string;
 
   /**
    * Create sample Amazon Connect organization hierarchies
    */
   createHierarchy: boolean;
-
 
   /**
    * business hours time zone
@@ -82,8 +81,8 @@ export class CreateAmazonConnectResourceStack extends cdk.Stack {
       contactflowLogs: this.props.contactflowLogs,
       autoResolveBestVoices: this.props.autoResolveBestVoices,
       identityManagementType: this.props.identityManagementType,
+      directoryId: this.props.directoryId,
       dataStorageBucket,
-      createBusinessHours: this.props.createBusinessHours,
       businessHoursTimeZone: this.props.businessHoursTimeZone
     });
 

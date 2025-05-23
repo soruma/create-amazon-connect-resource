@@ -28,10 +28,10 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
   - Boolean flag which enables AUTO_RESOLVE_BEST_VOICES
 - `identityManagementType` (String) Default: `CONNECT_MANAGED`
   - Identity management type(`SAML` | `CONNECT_MANAGED` | `EXISTING_DIRECTORY`)
+- `directoryId` (String)
+  - Required if `identityManagementType` is `EXISTING_DIRECTORY`, format: `d-0000000000`
 - `createDataStorageBucket` (Boolean) Default: `true`
   - Whether to store call and chat records in storage
-- `createBusinessHours` (Boolean) Default: `false`
-  - Whether to create business hours
 - `businessHoursTimeZone` (String) Deault: `UTC`
   - Business hours time zone
 - `createHierarchy` (Boolean) Default: `false`
@@ -41,7 +41,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 - Amazon Connect
   - Instance name is `${connectInstanceAlias}`
-  - Business hours (optional)
+  - Business hours
     - The business hours configuration file is `config/business_hours.json`
   - Hierarchy group (optional)
 - S3 Bucket

@@ -9,7 +9,6 @@ const app = new cdk.App();
 
 const connectInstanceAlias = getStringContext(app, 'connectInstanceAlias');
 const createDataStorageBucket = getBooleanContext(app, 'createDataStorageBucket', { default: true });
-const createBusinessHours = getBooleanContext(app, 'createBusinessHours', { default: false });
 const businessHoursTimeZone = getStringContext(app, 'businessHoursTimeZone', { default: 'UTC' });
 const createHierarchy = getBooleanContext(app, 'createHierarchy', { default: false });
 
@@ -18,6 +17,7 @@ const outboundCalls = getBooleanContext(app, 'outboundCalls', { default: true })
 const contactflowLogs = getBooleanContext(app, 'contactflowLogs', { default: true });
 const autoResolveBestVoices = getBooleanContext(app, 'autoResolveBestVoices', { default: true });
 const identityManagementType = getStringContext(app, 'identityManagementType', { default: 'CONNECT_MANAGED' }) as IdentityManagementType;
+const directoryId = app.node.tryGetContext('directoryId');
 
 if (connectInstanceAlias === undefined) {
   throw new Error('Please argument a context for "connectInstanceAlias"');
@@ -34,8 +34,8 @@ new CreateAmazonConnectResourceStack(app, `AmazonConnectResourceStack-${connectI
   contactflowLogs,
   autoResolveBestVoices,
   identityManagementType,
+  directoryId,
   createDataStorageBucket,
-  createBusinessHours,
   businessHoursTimeZone,
   createHierarchy,
 });

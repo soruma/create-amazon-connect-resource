@@ -25,13 +25,13 @@ export class AmazonConnectContentConstruct extends Construct {
     this.props = props;
 
     if (this.props.createHierarchy) {
-      this.createHierarchy(this.props.connectInstanceArn);
+      this.createHierarchy();
     }
   }
 
-  createHierarchy(connectInstanceArn: string) {
+  createHierarchy() {
     new connect.CfnUserHierarchyStructure(this, 'DepartmentUserHierarchyStructure', {
-      instanceArn: connectInstanceArn,
+      instanceArn: this.props.connectInstanceArn,
       userHierarchyStructure: {
         levelOne: {
           name: 'Department',

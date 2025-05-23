@@ -4,7 +4,7 @@ import { CreateAmazonConnectResourceStack } from '../lib/create-amazon-connect-r
 
 describe('CreateAmazonConnectResourceStack', () => {
   describe('Matches the snapshot', () => {
-    test('Create data storage and business hour, hierarchy', () => {
+    test('Create data storage and hierarchy', () => {
       const app = new cdk.App();
 
       const stack = new CreateAmazonConnectResourceStack(app, 'CreateAmazonConnectResourceStack-test', {
@@ -19,7 +19,6 @@ describe('CreateAmazonConnectResourceStack', () => {
         autoResolveBestVoices: true,
         identityManagementType: 'CONNECT_MANAGED',
         createDataStorageBucket: true,
-        createBusinessHours: true,
         businessHoursTimeZone: 'UTC',
         createHierarchy: true,
       });
@@ -28,7 +27,7 @@ describe('CreateAmazonConnectResourceStack', () => {
       expect(template.toJSON()).toMatchSnapshot();
     });
 
-    test('Create data storage and business hour, not create hierarchy', () => {
+    test('Create data storage, not create hierarchy', () => {
       const app = new cdk.App();
 
       const stack = new CreateAmazonConnectResourceStack(app, 'CreateAmazonConnectResourceStack-test', {
@@ -43,7 +42,6 @@ describe('CreateAmazonConnectResourceStack', () => {
         autoResolveBestVoices: true,
         identityManagementType: 'CONNECT_MANAGED',
         createDataStorageBucket: true,
-        createBusinessHours: true,
         businessHoursTimeZone: 'UTC',
         createHierarchy: false,
       });
@@ -52,7 +50,7 @@ describe('CreateAmazonConnectResourceStack', () => {
       expect(template.toJSON()).toMatchSnapshot();
     });
 
-    test('Create business hour and hierarchy, not create data storage', () => {
+    test('Create hierarchy, not create data storage', () => {
       const app = new cdk.App();
 
       const stack = new CreateAmazonConnectResourceStack(app, 'CreateAmazonConnectResourceStack-test', {
@@ -67,7 +65,6 @@ describe('CreateAmazonConnectResourceStack', () => {
         autoResolveBestVoices: true,
         identityManagementType: 'CONNECT_MANAGED',
         createDataStorageBucket: false,
-        createBusinessHours: true,
         businessHoursTimeZone: 'UTC',
         createHierarchy: true,
       });
@@ -76,7 +73,7 @@ describe('CreateAmazonConnectResourceStack', () => {
       expect(template.toJSON()).toMatchSnapshot();
     });
 
-    test('Not create data storage and hierarchy, business hour', () => {
+    test('Not create data storage and hierarchy', () => {
       const app = new cdk.App();
 
       const stack = new CreateAmazonConnectResourceStack(app, 'CreateAmazonConnectResourceStack-test', {
@@ -91,7 +88,6 @@ describe('CreateAmazonConnectResourceStack', () => {
         autoResolveBestVoices: true,
         identityManagementType: 'CONNECT_MANAGED',
         createDataStorageBucket: false,
-        createBusinessHours: false,
         businessHoursTimeZone: 'UTC',
         createHierarchy: false,
       });
@@ -99,5 +95,29 @@ describe('CreateAmazonConnectResourceStack', () => {
       const template = Template.fromStack(stack);
       expect(template.toJSON()).toMatchSnapshot();
     });
+  });
+
+  test('Identity management is Directory service', () => {
+      const app = new cdk.App();
+
+      const stack = new CreateAmazonConnectResourceStack(app, 'CreateAmazonConnectResourceStack-test', {
+        env: {
+          account: '000000000000',
+          region: 'us-east-1',
+        },
+        connectInstanceAlias: 'test',
+        inboundCalls: true,
+        outboundCalls: true,
+        contactflowLogs: true,
+        autoResolveBestVoices: true,
+        identityManagementType: 'EXISTING_DIRECTORY',
+        directoryId: 'd-0000000000',
+        createDataStorageBucket: true,
+        businessHoursTimeZone: 'UTC',
+        createHierarchy: true,
+      });
+
+      const template = Template.fromStack(stack);
+      expect(template.toJSON()).toMatchSnapshot();
   });
 });

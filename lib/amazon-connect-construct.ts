@@ -41,14 +41,14 @@ interface AmazonConnectConstructProps {
   identityManagementType: IdentityManagementType;
 
   /**
-   * Amazon connect data storage
+   * The identifier for the directory.
    */
-  dataStorageBucket: s3.Bucket | undefined;
+  directoryId?: string;
 
   /**
-   * Whether to create business hours
+   * Amazon connect data storage
    */
-  createBusinessHours: boolean;
+  dataStorageBucket?: s3.Bucket;
 
   /**
    * business hours time zone
@@ -74,6 +74,7 @@ export class AmazonConnectConstruct extends Construct {
       },
       identityManagementType: this.props.identityManagementType,
       instanceAlias: this.props.connectInstanceAlias,
+      directoryId: this.props.directoryId,
     });
 
     if (this.props.dataStorageBucket !== undefined) {
@@ -82,9 +83,7 @@ export class AmazonConnectConstruct extends Construct {
       this.createInstanceStorageConfig();
     }
 
-    if (this.props.createBusinessHours) {
-      this.createBusinessHours();
-    }
+    this.createBusinessHours();
   }
 
   createInstanceStorageConfig() {
@@ -123,11 +122,11 @@ export class AmazonConnectConstruct extends Construct {
     });
   }
 
-  createBusinessHours() {
+  createBusinessHours(): connect.CfnHoursOfOperation {
     const data = readFileSync(path.join(__dirname, '..', 'config', 'business_hours.json'), { encoding: 'utf8' });
     const config = JSON.parse(data) as connect.CfnHoursOfOperation.HoursOfOperationConfigProperty[];
 
-    new connect.CfnHoursOfOperation(this, 'HoursOfOperation', {
+    return new connect.CfnHoursOfOperation(this, 'HoursOfOperation', {
       instanceArn: this.connectInstance.attrArn,
       name: 'Business Hour',
       config,

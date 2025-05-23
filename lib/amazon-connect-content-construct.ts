@@ -5,15 +5,19 @@ import { Construct } from 'constructs';
 
 interface AmazonConnectContentConstructProps {
   connectInstanceArn: string;
-  isCreateHierarchy: boolean;
+  createHierarchy: boolean;
 }
 
 export class AmazonConnectContentConstruct extends Construct {
+  private props: AmazonConnectContentConstructProps;
+
   constructor(scope: Construct, id: string, props: AmazonConnectContentConstructProps) {
     super(scope, id);
 
-    if (props.isCreateHierarchy) {
-      this.createHierarchy(props.connectInstanceArn);
+    this.props = props;
+
+    if (this.props.createHierarchy) {
+      this.createHierarchy(this.props.connectInstanceArn);
     }
   }
 

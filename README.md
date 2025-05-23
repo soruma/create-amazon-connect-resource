@@ -9,7 +9,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `pnpm build`   compile typescript to js
 * `pnpm watch`   watch for changes and compile
 * `pnpm test`    perform the jest unit tests
-* `pnpm run cdk deploy --context connectInstanceAlias=<amazon-connect-instanch-name> --context isCreateHierarchy=true`  deploy this stack to your default AWS account/region
+* `pnpm run cdk deploy --context connectInstanceAlias=<amazon-connect-instanch-name> --context createHierarchy=true`  deploy this stack to your default AWS account/region
 * `pnpm run cdk diff`    compare deployed stack with current state
 * `pnpm run cdk synth`   emits the synthesized CloudFormation template
 
@@ -18,9 +18,9 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 - `connectInstanceAlias` (String) **Required**
   - Amazon Connect instance alias
   - S3 Bucket name
-- `isCreateDataStorageBucket` (Boolean) Default: `true`
+- `createDataStorageBucket` (Boolean) Default: `true`
   - Whether to store call and chat records in storage
-- `isCreateHierarchy` (Boolean) Default: `false`
+- `createHierarchy` (Boolean) Default: `false`
   - Create sample Amazon Connect organization hierarchies
 
 ## Create resources
@@ -29,4 +29,4 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
   - Instance name is `${connectInstanceAlias}`
 - S3 Bucket
   - Bucket name is `connect-${connectInstanceAlias}`
-    - If `isCreateDataStorageBucket` is `false`, it will not be create
+    - If `createDataStorageBucket` is `false`, it will not be create

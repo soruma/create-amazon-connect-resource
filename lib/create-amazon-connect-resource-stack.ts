@@ -7,27 +7,35 @@ import { AmazonConnectContentConstruct } from './amazon-connect-content-construc
 
 interface CreateAmazonConnectResourceStackProps extends cdk.StackProps {
   connectInstanceAlias: string;
-  isCreateDataStorageBucket: boolean;
-  isCreateHierarchy: boolean;
+  createDataStorageBucket: boolean;
+  createHierarchy: boolean;
 }
 
 export class CreateAmazonConnectResourceStack extends cdk.Stack {
+  private props: CreateAmazonConnectResourceStackProps;
+
   constructor(scope: Construct, id: string, props: CreateAmazonConnectResourceStackProps) {
     super(scope, id, props);
 
-    const dataStorageBucket = new s3.Bucket(this, 'DataStorageBucket', {
-      bucketName: `connect-${props.connectInstanceAlias}`,
-      encryption: s3.BucketEncryption.S3_MANAGED
-    });
+    this.props = props;
+
+    let dataStorageBucket: s3.Bucket | undefined;
+    
+    if (this.props.createDataStorageBucket) {
+      dataStorageBucket = new s3.Bucket(this, 'DataStorageBucket', {
+        bucketName: `connect-${this.props.connectInstanceAlias}`,
+        encryption: s3.BucketEncryption.S3_MANAGED
+      });
+    }
 
     const amazonConnect = new AmazonConnectConstruct(this, 'AmazonConnectConstruct', {
-      connectInstanceAlias: props.connectInstanceAlias,
+      connectInstanceAlias: this.props.connectInstanceAlias,
       dataStorageBucket,
     });
 
     new AmazonConnectContentConstruct(this, 'AmazonConnectContentConstruct', {
       connectInstanceArn: amazonConnect.connectInstance.attrArn,
-      isCreateHierarchy: props.isCreateHierarchy
+      createHierarchy: props.createHierarchy
     });
   }
 }

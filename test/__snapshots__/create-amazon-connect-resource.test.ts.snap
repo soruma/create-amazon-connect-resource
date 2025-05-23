@@ -34,7 +34,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         "ResourceType": "CALL_RECORDINGS",
         "S3Config": {
           "BucketName": {
-            "Ref": "RecordingBucket03AEF6D2",
+            "Ref": "DataStorageBucket1A195487",
           },
           "BucketPrefix": "CallRecordings",
           "EncryptionConfig": {
@@ -68,7 +68,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         "ResourceType": "CHAT_TRANSCRIPTS",
         "S3Config": {
           "BucketName": {
-            "Ref": "RecordingBucket03AEF6D2",
+            "Ref": "DataStorageBucket1A195487",
           },
           "BucketPrefix": "ChatTranscripts",
           "EncryptionConfig": {
@@ -91,7 +91,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
       },
       "Type": "AWS::Connect::InstanceStorageConfig",
     },
-    "AmazonConnectConstructDepartmentUserHierarchyStructure2BCCB13B": {
+    "AmazonConnectContentConstructDepartmentUserHierarchyStructure9FF66031": {
       "Properties": {
         "InstanceArn": {
           "Fn::GetAtt": [
@@ -110,7 +110,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
       },
       "Type": "AWS::Connect::UserHierarchyStructure",
     },
-    "AmazonConnectConstructSalesDepartmentContactUserHierarchyGroupC8C9EA84": {
+    "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0": {
       "Properties": {
         "InstanceArn": {
           "Fn::GetAtt": [
@@ -122,7 +122,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
       },
       "Type": "AWS::Connect::UserHierarchyGroup",
     },
-    "AmazonConnectConstructSalesDepartmentTeam1ContactUserHierarchyGroup3F5E18C8": {
+    "AmazonConnectContentConstructSalesDepartmentTeam1ContactUserHierarchyGroup30989937": {
       "Properties": {
         "InstanceArn": {
           "Fn::GetAtt": [
@@ -133,14 +133,14 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         "Name": "Team 1",
         "ParentGroupArn": {
           "Fn::GetAtt": [
-            "AmazonConnectConstructSalesDepartmentContactUserHierarchyGroupC8C9EA84",
+            "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0",
             "UserHierarchyGroupArn",
           ],
         },
       },
       "Type": "AWS::Connect::UserHierarchyGroup",
     },
-    "AmazonConnectConstructSalesDepartmentTeam2ContactUserHierarchyGroup90C3B7E0": {
+    "AmazonConnectContentConstructSalesDepartmentTeam2ContactUserHierarchyGroupEF342A91": {
       "Properties": {
         "InstanceArn": {
           "Fn::GetAtt": [
@@ -151,14 +151,14 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         "Name": "Team 2",
         "ParentGroupArn": {
           "Fn::GetAtt": [
-            "AmazonConnectConstructSalesDepartmentContactUserHierarchyGroupC8C9EA84",
+            "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0",
             "UserHierarchyGroupArn",
           ],
         },
       },
       "Type": "AWS::Connect::UserHierarchyGroup",
     },
-    "AmazonConnectConstructSupportDepartmentContactUserHierarchyGroup392AFB87": {
+    "AmazonConnectContentConstructSupportDepartmentContactUserHierarchyGroup2CBFBEC5": {
       "Properties": {
         "InstanceArn": {
           "Fn::GetAtt": [
@@ -170,7 +170,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
       },
       "Type": "AWS::Connect::UserHierarchyGroup",
     },
-    "AmazonConnectConstructSupportDepartmentTeam1ContactUserHierarchyGroup6F329B7B": {
+    "AmazonConnectContentConstructSupportDepartmentTeam1ContactUserHierarchyGroup31C9D416": {
       "Properties": {
         "InstanceArn": {
           "Fn::GetAtt": [
@@ -181,14 +181,14 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         "Name": "Team 1",
         "ParentGroupArn": {
           "Fn::GetAtt": [
-            "AmazonConnectConstructSupportDepartmentContactUserHierarchyGroup392AFB87",
+            "AmazonConnectContentConstructSupportDepartmentContactUserHierarchyGroup2CBFBEC5",
             "UserHierarchyGroupArn",
           ],
         },
       },
       "Type": "AWS::Connect::UserHierarchyGroup",
     },
-    "RecordingBucket03AEF6D2": {
+    "DataStorageBucket1A195487": {
       "DeletionPolicy": "Retain",
       "Properties": {
         "BucketEncryption": {
@@ -200,15 +200,15 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
             },
           ],
         },
-        "BucketName": "test",
+        "BucketName": "connect-test",
       },
       "Type": "AWS::S3::Bucket",
       "UpdateReplacePolicy": "Retain",
     },
-    "RecordingBucketPolicyE50392DB": {
+    "DataStorageBucketPolicyAD94CA11": {
       "Properties": {
         "Bucket": {
-          "Ref": "RecordingBucket03AEF6D2",
+          "Ref": "DataStorageBucket1A195487",
         },
         "PolicyDocument": {
           "Statement": [
@@ -229,7 +229,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "RecordingBucket03AEF6D2",
+                    "DataStorageBucket1A195487",
                     "Arn",
                   ],
                 },
@@ -239,7 +239,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
                     [
                       {
                         "Fn::GetAtt": [
-                          "RecordingBucket03AEF6D2",
+                          "DataStorageBucket1A195487",
                           "Arn",
                         ],
                       },
@@ -320,7 +320,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         "ResourceType": "CALL_RECORDINGS",
         "S3Config": {
           "BucketName": {
-            "Ref": "RecordingBucket03AEF6D2",
+            "Ref": "DataStorageBucket1A195487",
           },
           "BucketPrefix": "CallRecordings",
           "EncryptionConfig": {
@@ -354,7 +354,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         "ResourceType": "CHAT_TRANSCRIPTS",
         "S3Config": {
           "BucketName": {
-            "Ref": "RecordingBucket03AEF6D2",
+            "Ref": "DataStorageBucket1A195487",
           },
           "BucketPrefix": "ChatTranscripts",
           "EncryptionConfig": {
@@ -377,7 +377,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
       },
       "Type": "AWS::Connect::InstanceStorageConfig",
     },
-    "RecordingBucket03AEF6D2": {
+    "DataStorageBucket1A195487": {
       "DeletionPolicy": "Retain",
       "Properties": {
         "BucketEncryption": {
@@ -389,15 +389,15 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
             },
           ],
         },
-        "BucketName": "test",
+        "BucketName": "connect-test",
       },
       "Type": "AWS::S3::Bucket",
       "UpdateReplacePolicy": "Retain",
     },
-    "RecordingBucketPolicyE50392DB": {
+    "DataStorageBucketPolicyAD94CA11": {
       "Properties": {
         "Bucket": {
-          "Ref": "RecordingBucket03AEF6D2",
+          "Ref": "DataStorageBucket1A195487",
         },
         "PolicyDocument": {
           "Statement": [
@@ -418,7 +418,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "RecordingBucket03AEF6D2",
+                    "DataStorageBucket1A195487",
                     "Arn",
                   ],
                 },
@@ -428,7 +428,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
                     [
                       {
                         "Fn::GetAtt": [
-                          "RecordingBucket03AEF6D2",
+                          "DataStorageBucket1A195487",
                           "Arn",
                         ],
                       },
@@ -443,6 +443,157 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
         },
       },
       "Type": "AWS::S3::BucketPolicy",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`CreateAmazonConnectResourceStack Matches the snapshot Create hierarchy, not create data storage 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AmazonConnectConstruct1C9DFEFB": {
+      "Properties": {
+        "Attributes": {
+          "AutoResolveBestVoices": true,
+          "ContactflowLogs": true,
+          "InboundCalls": true,
+          "OutboundCalls": true,
+        },
+        "IdentityManagementType": "CONNECT_MANAGED",
+        "InstanceAlias": "test",
+      },
+      "Type": "AWS::Connect::Instance",
+    },
+    "AmazonConnectContentConstructDepartmentUserHierarchyStructure9FF66031": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "UserHierarchyStructure": {
+          "LevelOne": {
+            "Name": "Department",
+          },
+          "LevelTwo": {
+            "Name": "Team",
+          },
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyStructure",
+    },
+    "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Sales department",
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "AmazonConnectContentConstructSalesDepartmentTeam1ContactUserHierarchyGroup30989937": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Team 1",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "AmazonConnectContentConstructSalesDepartmentTeam2ContactUserHierarchyGroupEF342A91": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Team 2",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectContentConstructSalesDepartmentContactUserHierarchyGroupC5256BD0",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "AmazonConnectContentConstructSupportDepartmentContactUserHierarchyGroup2CBFBEC5": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Support department",
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "AmazonConnectContentConstructSupportDepartmentTeam1ContactUserHierarchyGroup31C9D416": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Team 1",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectContentConstructSupportDepartmentContactUserHierarchyGroup2CBFBEC5",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
     },
   },
   "Rules": {

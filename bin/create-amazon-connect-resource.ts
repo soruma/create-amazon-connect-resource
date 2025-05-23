@@ -7,10 +7,10 @@ import { CreateAmazonConnectResourceStack } from '../lib/create-amazon-connect-r
 const app = new cdk.App();
 
 const connectInstanceAlias = app.node.tryGetContext('connectInstanceAlias');
-const isCreateDataStorageBucketStr = app.node.tryGetContext('isCreateHierarchy');
-const isCreateDataStorageBucket = isCreateDataStorageBucketStr ? stringToBooleanStrict(isCreateDataStorageBucketStr) : true;
-const isCreateHierarchyStr = app.node.tryGetContext('isCreateHierarchy');
-const isCreateHierarchy = isCreateHierarchyStr ? stringToBooleanStrict(isCreateHierarchyStr) : false;
+const createDataStorageBucketStr = app.node.tryGetContext('createDataStorageBucket');
+const createDataStorageBucket = createDataStorageBucketStr ? stringToBooleanStrict(createDataStorageBucketStr) : true;
+const createHierarchyStr = app.node.tryGetContext('createHierarchy');
+const createHierarchy = createHierarchyStr ? stringToBooleanStrict(createHierarchyStr) : false;
 
 if (connectInstanceAlias === undefined) {
   throw new Error('Please argument a context for "connectInstanceAlias"');
@@ -22,6 +22,6 @@ new CreateAmazonConnectResourceStack(app, `AmazonConnectResourceStack-${connectI
     region: process.env.CDK_DEFAULT_REGION
   },
   connectInstanceAlias,
-  isCreateDataStorageBucket,
-  isCreateHierarchy,
+  createDataStorageBucket,
+  createHierarchy,
 });

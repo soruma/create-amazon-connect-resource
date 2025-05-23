@@ -13,8 +13,8 @@ describe('CreateAmazonConnectResourceStack', () => {
           region: 'us-east-1',
         },
         connectInstanceAlias: 'test',
-        isCreateDataStorageBucket: true,
-        isCreateHierarchy: true,
+        createDataStorageBucket: true,
+        createHierarchy: true,
       });
 
       const template = Template.fromStack(stack);
@@ -30,8 +30,8 @@ describe('CreateAmazonConnectResourceStack', () => {
           region: 'us-east-1',
         },
         connectInstanceAlias: 'test',
-        isCreateDataStorageBucket: true,
-        isCreateHierarchy: false,
+        createDataStorageBucket: true,
+        createHierarchy: false,
       });
 
       const template = Template.fromStack(stack);
@@ -47,8 +47,8 @@ describe('CreateAmazonConnectResourceStack', () => {
           region: 'us-east-1',
         },
         connectInstanceAlias: 'test',
-        isCreateDataStorageBucket: false,
-        isCreateHierarchy: true,
+        createDataStorageBucket: false,
+        createHierarchy: true,
       });
 
       const template = Template.fromStack(stack);

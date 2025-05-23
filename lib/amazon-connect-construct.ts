@@ -11,13 +11,13 @@ interface AmazonConnectConstructProps {
 }
 
 export class AmazonConnectConstruct extends Construct {
-  private readonly recordingBucket: s3.Bucket;
+  private readonly props: AmazonConnectConstructProps;
   readonly connectInstance: connect.CfnInstance;
 
   constructor(scope: Construct, id: string, props: AmazonConnectConstructProps) {
     super(scope, id);
 
-    this.recordingBucket = props.recordingBucket;
+    this.props = props;
 
     this.connectInstance = new connect.CfnInstance(this, id, {
       attributes: {
@@ -27,7 +27,7 @@ export class AmazonConnectConstruct extends Construct {
         autoResolveBestVoices: true,
       },
       identityManagementType: 'CONNECT_MANAGED',
-      instanceAlias: props.connectInstanceAlias,
+      instanceAlias: this.props.connectInstanceAlias,
     });
     props.recordingBucket.grantWrite(new iam.ServicePrincipal('connect.amazonaws.com'));
 
@@ -44,7 +44,7 @@ export class AmazonConnectConstruct extends Construct {
       resourceType: 'CALL_RECORDINGS',
       storageType: 'S3',
       s3Config: {
-        bucketName: this.recordingBucket.bucketName,
+        bucketName: this.props.recordingBucket.bucketName,
         bucketPrefix: 'CallRecordings',
         encryptionConfig: {
           encryptionType: 'KMS',
@@ -58,7 +58,7 @@ export class AmazonConnectConstruct extends Construct {
       resourceType: 'CHAT_TRANSCRIPTS',
       storageType: 'S3',
       s3Config: {
-        bucketName: this.recordingBucket.bucketName,
+        bucketName: this.props.recordingBucket.bucketName,
         bucketPrefix: 'ChatTranscripts',
         encryptionConfig: {
           encryptionType: 'KMS',

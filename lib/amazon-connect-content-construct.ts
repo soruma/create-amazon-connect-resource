@@ -2,6 +2,7 @@ import * as cdk from 'aws-cdk-lib';
 
 import * as connect from 'aws-cdk-lib/aws-connect';
 import { Construct } from 'constructs';
+import { AmazonConnectContentHierarchyGroupStack } from './amazon-connect-content-hierarchy-group-stack';
 
 interface AmazonConnectContentConstructProps {
   connectInstanceArn: string;
@@ -32,34 +33,10 @@ export class AmazonConnectContentConstruct extends Construct {
           name: 'Team',
         }
       }
-    })
-
-    const salesDepartment = new connect.CfnUserHierarchyGroup(this, 'SalesDepartmentContactUserHierarchyGroup', {
-      instanceArn: connectInstanceArn,
-      name: 'Sales department',
     });
 
-    new connect.CfnUserHierarchyGroup(this, 'SalesDepartmentTeam1ContactUserHierarchyGroup', {
-      instanceArn: connectInstanceArn,
-      name: 'Team 1',
-      parentGroupArn: salesDepartment.attrUserHierarchyGroupArn
-    });
-
-    new connect.CfnUserHierarchyGroup(this, 'SalesDepartmentTeam2ContactUserHierarchyGroup', {
-      instanceArn: connectInstanceArn,
-      name: 'Team 2',
-      parentGroupArn: salesDepartment.attrUserHierarchyGroupArn
-    });
-
-    const supportDepartment = new connect.CfnUserHierarchyGroup(this, 'SupportDepartmentContactUserHierarchyGroup', {
-      instanceArn: connectInstanceArn,
-      name: 'Support department',
-    });
-
-    new connect.CfnUserHierarchyGroup(this, 'SupportDepartmentTeam1ContactUserHierarchyGroup', {
-      instanceArn: connectInstanceArn,
-      name: 'Team 1',
-      parentGroupArn: supportDepartment.attrUserHierarchyGroupArn
+    new AmazonConnectContentHierarchyGroupStack(this, 'AmazonConnectContentHierarchyGroupStack', {
+      connectInstanceArn: this.props.connectInstanceArn,
     });
   }
 }

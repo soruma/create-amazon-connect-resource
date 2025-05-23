@@ -27,6 +27,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 - Amazon Connect
   - Instance name is `${connectInstanceAlias}`
+  - Hierarchy group  (optional)
 - S3 Bucket
   - Bucket name is `connect-${connectInstanceAlias}`
     - If `createDataStorageBucket` is `false`, it will not be create

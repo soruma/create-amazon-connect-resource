@@ -10,6 +10,10 @@ const connectInstanceAlias = app.node.tryGetContext('connectInstanceAlias');
 const isCreateHierarchyStr = app.node.tryGetContext('isCreateHierarchy');
 const isCreateHierarchy = isCreateHierarchyStr ? stringToBooleanStrict(isCreateHierarchyStr) : false;
 
+if (connectInstanceAlias === undefined) {
+  throw new Error('Please argument a context for "connectInstanceAlias"');
+}
+
 new CreateAmazonConnectResourceStack(app, `AmazonConnectResourceStack-${connectInstanceAlias}`, {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,

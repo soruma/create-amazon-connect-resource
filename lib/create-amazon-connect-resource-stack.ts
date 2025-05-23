@@ -14,14 +14,14 @@ export class CreateAmazonConnectResourceStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: CreateAmazonConnectResourceStackProps) {
     super(scope, id, props);
 
-    const recordingBucket = new s3.Bucket(this, 'RecordingBucket', {
-      bucketName: props.connectInstanceAlias,
+    const dataStorageBucket = new s3.Bucket(this, 'DataStorageBucket', {
+      bucketName: `connect-${props.connectInstanceAlias}`,
       encryption: s3.BucketEncryption.S3_MANAGED
     });
 
     const amazonConnect = new AmazonConnectConstruct(this, 'AmazonConnectConstruct', {
       connectInstanceAlias: props.connectInstanceAlias,
-      recordingBucket,
+      dataStorageBucket,
     });
 
     new AmazonConnectContentConstruct(this, 'AmazonConnectContentConstruct', {

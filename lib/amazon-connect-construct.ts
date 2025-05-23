@@ -6,8 +6,15 @@ import * as kms from 'aws-cdk-lib/aws-kms';
 import * as iam from 'aws-cdk-lib/aws-iam';
 
 interface AmazonConnectConstructProps {
+  /**
+   * Amazon Connect instance alias
+   */
   connectInstanceAlias: string;
-  recordingBucket: s3.Bucket;
+
+  /**
+   * Amazon connect data storage
+   */
+  dataStorageBucket: s3.Bucket;
 }
 
 export class AmazonConnectConstruct extends Construct {
@@ -29,7 +36,7 @@ export class AmazonConnectConstruct extends Construct {
       identityManagementType: 'CONNECT_MANAGED',
       instanceAlias: this.props.connectInstanceAlias,
     });
-    props.recordingBucket.grantWrite(new iam.ServicePrincipal('connect.amazonaws.com'));
+    props.dataStorageBucket.grantWrite(new iam.ServicePrincipal('connect.amazonaws.com'));
 
     this.createInstanceStorageConfig(this.connectInstance);
   }
@@ -44,7 +51,7 @@ export class AmazonConnectConstruct extends Construct {
       resourceType: 'CALL_RECORDINGS',
       storageType: 'S3',
       s3Config: {
-        bucketName: this.props.recordingBucket.bucketName,
+        bucketName: this.props.dataStorageBucket.bucketName,
         bucketPrefix: 'CallRecordings',
         encryptionConfig: {
           encryptionType: 'KMS',
@@ -58,7 +65,7 @@ export class AmazonConnectConstruct extends Construct {
       resourceType: 'CHAT_TRANSCRIPTS',
       storageType: 'S3',
       s3Config: {
-        bucketName: this.props.recordingBucket.bucketName,
+        bucketName: this.props.dataStorageBucket.bucketName,
         bucketPrefix: 'ChatTranscripts',
         encryptionConfig: {
           encryptionType: 'KMS',

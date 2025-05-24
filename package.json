@@ -7,6 +7,7 @@
     "lint": "biome lint . && biome check .",
     "format": "biome format . --write && biome check . --write",
     "amazon-connect-creator": "pnpm --filter amazon-connect-creator",
+    "amazon-connect-resource-creator": "pnpm --filter amazon-connect-resource-creator",
     "cleanup-generated-files": "ts-node bin/cleanup-generated-files.ts"
   },
   "keywords": ["amazon", "amazon connect", "cdk"],

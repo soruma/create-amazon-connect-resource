@@ -1,0 +1,9 @@
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+
+# CDK Context & Staging files
+cdk.context.json
+.cdk.staging
+cdk.out

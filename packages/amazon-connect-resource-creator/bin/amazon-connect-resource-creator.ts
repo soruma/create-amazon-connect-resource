@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { CreateAmazonConnectResourceStack } from '../lib/create-amazon-connect-resource-stack';
+import { AmazonConnectResourceCreatorStack } from '../lib/amazon-connect-resource-creator-stack';
 import { getBooleanContext, getStringContext } from './utils';
 import { IdentityManagementType } from '../lib/amazon-connect-construct';
 
@@ -23,7 +23,7 @@ if (connectInstanceAlias === undefined) {
   throw new Error('Please argument a context for "connectInstanceAlias"');
 }
 
-new CreateAmazonConnectResourceStack(app, `AmazonConnectResourceStack-${connectInstanceAlias}`, {
+new AmazonConnectResourceCreatorStack(app, `AmazonConnectResourceStack-${connectInstanceAlias}`, {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
     region: process.env.CDK_DEFAULT_REGION

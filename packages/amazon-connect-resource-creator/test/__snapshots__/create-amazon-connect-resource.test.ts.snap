@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateAmazonConnectResourceStack Identity management is Directory service 1`] = `
+exports[`AmazonConnectResourceCreatorStack Identity management is Directory service 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -162,11 +162,111 @@ exports[`CreateAmazonConnectResourceStack Identity management is Directory servi
       },
       "Type": "AWS::Connect::HoursOfOperation",
     },
+    "AmazonConnectConstructQueue7C26EEF9": {
+      "Properties": {
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructHoursOfOperation59BBFAA0",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "AmazonConnectConstructRoutingProfileA5C41BAC": {
+      "Properties": {
+        "DefaultOutboundQueueArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructQueue7C26EEF9",
+            "QueueArn",
+          ],
+        },
+        "Description": "test",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "MediaConcurrencies": [
+          {
+            "Channel": "VOICE",
+            "Concurrency": 1,
+          },
+          {
+            "Channel": "CHAT",
+            "Concurrency": 2,
+          },
+        ],
+        "Name": "Test Ruting profile",
+      },
+      "Type": "AWS::Connect::RoutingProfile",
+    },
+    "AmazonConnectConstructSecurityProfileDA011FD5": {
+      "Properties": {
+        "Description": "Administrator Group",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Permissions": [
+          "RoutingPolicies.Create",
+          "RoutingPolicies.Edit",
+          "RoutingPolicies.View",
+        ],
+        "SecurityProfileName": "Administrator",
+      },
+      "Type": "AWS::Connect::SecurityProfile",
+    },
+    "AmazonConnectConstructUser16E9DF1C7": {
+      "Properties": {
+        "IdentityInfo": {
+          "FirstName": "User",
+          "LastName": "Hello",
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Password": "122aJJJJ",
+        "PhoneConfig": {
+          "AfterContactWorkTimeLimit": 10,
+          "PhoneType": "SOFT_PHONE",
+        },
+        "RoutingProfileArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructRoutingProfileA5C41BAC",
+            "RoutingProfileArn",
+          ],
+        },
+        "SecurityProfileArns": [
+          {
+            "Fn::GetAtt": [
+              "AmazonConnectConstructSecurityProfileDA011FD5",
+              "SecurityProfileArn",
+            ],
+          },
+        ],
+        "Username": "User1",
+      },
+      "Type": "AWS::Connect::User",
+    },
     "AmazonConnectContentConstructAmazonConnectContentHierarchyGroupStackNestedStackAmazonConnectContentHierarchyGroupStackNestedStackResource8A175594": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "Parameters": {
-          "referencetoCreateAmazonConnectResourceStacktestAmazonConnectConstruct26581347Arn": {
+          "referencetoAmazonConnectResourceCreatorStacktestAmazonConnectConstruct406CF072Arn": {
             "Fn::GetAtt": [
               "AmazonConnectConstruct1C9DFEFB",
               "Arn",
@@ -181,7 +281,7 @@ exports[`CreateAmazonConnectResourceStack Identity management is Directory servi
               {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-000000000000-us-east-1/e967c3688d53ed181107239495903d11cf6e9f98287c5cd4929dd5f3cbcc8fbb.json",
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/c250ea88c33453cb5cd029303f2a8bc19fda878b90d5cc3b07865720650ae70b.json",
             ],
           ],
         },
@@ -306,7 +406,7 @@ exports[`CreateAmazonConnectResourceStack Identity management is Directory servi
 }
 `;
 
-exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data storage and hierarchy 1`] = `
+exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create data storage and hierarchy 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -467,11 +567,111 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
       },
       "Type": "AWS::Connect::HoursOfOperation",
     },
+    "AmazonConnectConstructQueue7C26EEF9": {
+      "Properties": {
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructHoursOfOperation59BBFAA0",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "AmazonConnectConstructRoutingProfileA5C41BAC": {
+      "Properties": {
+        "DefaultOutboundQueueArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructQueue7C26EEF9",
+            "QueueArn",
+          ],
+        },
+        "Description": "test",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "MediaConcurrencies": [
+          {
+            "Channel": "VOICE",
+            "Concurrency": 1,
+          },
+          {
+            "Channel": "CHAT",
+            "Concurrency": 2,
+          },
+        ],
+        "Name": "Test Ruting profile",
+      },
+      "Type": "AWS::Connect::RoutingProfile",
+    },
+    "AmazonConnectConstructSecurityProfileDA011FD5": {
+      "Properties": {
+        "Description": "Administrator Group",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Permissions": [
+          "RoutingPolicies.Create",
+          "RoutingPolicies.Edit",
+          "RoutingPolicies.View",
+        ],
+        "SecurityProfileName": "Administrator",
+      },
+      "Type": "AWS::Connect::SecurityProfile",
+    },
+    "AmazonConnectConstructUser16E9DF1C7": {
+      "Properties": {
+        "IdentityInfo": {
+          "FirstName": "User",
+          "LastName": "Hello",
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Password": "122aJJJJ",
+        "PhoneConfig": {
+          "AfterContactWorkTimeLimit": 10,
+          "PhoneType": "SOFT_PHONE",
+        },
+        "RoutingProfileArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructRoutingProfileA5C41BAC",
+            "RoutingProfileArn",
+          ],
+        },
+        "SecurityProfileArns": [
+          {
+            "Fn::GetAtt": [
+              "AmazonConnectConstructSecurityProfileDA011FD5",
+              "SecurityProfileArn",
+            ],
+          },
+        ],
+        "Username": "User1",
+      },
+      "Type": "AWS::Connect::User",
+    },
     "AmazonConnectContentConstructAmazonConnectContentHierarchyGroupStackNestedStackAmazonConnectContentHierarchyGroupStackNestedStackResource8A175594": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "Parameters": {
-          "referencetoCreateAmazonConnectResourceStacktestAmazonConnectConstruct26581347Arn": {
+          "referencetoAmazonConnectResourceCreatorStacktestAmazonConnectConstruct406CF072Arn": {
             "Fn::GetAtt": [
               "AmazonConnectConstruct1C9DFEFB",
               "Arn",
@@ -486,7 +686,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
               {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-000000000000-us-east-1/e967c3688d53ed181107239495903d11cf6e9f98287c5cd4929dd5f3cbcc8fbb.json",
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/c250ea88c33453cb5cd029303f2a8bc19fda878b90d5cc3b07865720650ae70b.json",
             ],
           ],
         },
@@ -611,7 +811,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
 }
 `;
 
-exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data storage, not create hierarchy 1`] = `
+exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create data storage, not create hierarchy 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -772,6 +972,106 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
       },
       "Type": "AWS::Connect::HoursOfOperation",
     },
+    "AmazonConnectConstructQueue7C26EEF9": {
+      "Properties": {
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructHoursOfOperation59BBFAA0",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "AmazonConnectConstructRoutingProfileA5C41BAC": {
+      "Properties": {
+        "DefaultOutboundQueueArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructQueue7C26EEF9",
+            "QueueArn",
+          ],
+        },
+        "Description": "test",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "MediaConcurrencies": [
+          {
+            "Channel": "VOICE",
+            "Concurrency": 1,
+          },
+          {
+            "Channel": "CHAT",
+            "Concurrency": 2,
+          },
+        ],
+        "Name": "Test Ruting profile",
+      },
+      "Type": "AWS::Connect::RoutingProfile",
+    },
+    "AmazonConnectConstructSecurityProfileDA011FD5": {
+      "Properties": {
+        "Description": "Administrator Group",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Permissions": [
+          "RoutingPolicies.Create",
+          "RoutingPolicies.Edit",
+          "RoutingPolicies.View",
+        ],
+        "SecurityProfileName": "Administrator",
+      },
+      "Type": "AWS::Connect::SecurityProfile",
+    },
+    "AmazonConnectConstructUser16E9DF1C7": {
+      "Properties": {
+        "IdentityInfo": {
+          "FirstName": "User",
+          "LastName": "Hello",
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Password": "122aJJJJ",
+        "PhoneConfig": {
+          "AfterContactWorkTimeLimit": 10,
+          "PhoneType": "SOFT_PHONE",
+        },
+        "RoutingProfileArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructRoutingProfileA5C41BAC",
+            "RoutingProfileArn",
+          ],
+        },
+        "SecurityProfileArns": [
+          {
+            "Fn::GetAtt": [
+              "AmazonConnectConstructSecurityProfileDA011FD5",
+              "SecurityProfileArn",
+            ],
+          },
+        ],
+        "Username": "User1",
+      },
+      "Type": "AWS::Connect::User",
+    },
     "DataStorageBucket1A195487": {
       "DeletionPolicy": "Retain",
       "Properties": {
@@ -870,7 +1170,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create data stora
 }
 `;
 
-exports[`CreateAmazonConnectResourceStack Matches the snapshot Create hierarchy, not create data storage 1`] = `
+exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create hierarchy, not create data storage 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -963,11 +1263,111 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create hierarchy,
       },
       "Type": "AWS::Connect::HoursOfOperation",
     },
+    "AmazonConnectConstructQueue7C26EEF9": {
+      "Properties": {
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructHoursOfOperation59BBFAA0",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "AmazonConnectConstructRoutingProfileA5C41BAC": {
+      "Properties": {
+        "DefaultOutboundQueueArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructQueue7C26EEF9",
+            "QueueArn",
+          ],
+        },
+        "Description": "test",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "MediaConcurrencies": [
+          {
+            "Channel": "VOICE",
+            "Concurrency": 1,
+          },
+          {
+            "Channel": "CHAT",
+            "Concurrency": 2,
+          },
+        ],
+        "Name": "Test Ruting profile",
+      },
+      "Type": "AWS::Connect::RoutingProfile",
+    },
+    "AmazonConnectConstructSecurityProfileDA011FD5": {
+      "Properties": {
+        "Description": "Administrator Group",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Permissions": [
+          "RoutingPolicies.Create",
+          "RoutingPolicies.Edit",
+          "RoutingPolicies.View",
+        ],
+        "SecurityProfileName": "Administrator",
+      },
+      "Type": "AWS::Connect::SecurityProfile",
+    },
+    "AmazonConnectConstructUser16E9DF1C7": {
+      "Properties": {
+        "IdentityInfo": {
+          "FirstName": "User",
+          "LastName": "Hello",
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Password": "122aJJJJ",
+        "PhoneConfig": {
+          "AfterContactWorkTimeLimit": 10,
+          "PhoneType": "SOFT_PHONE",
+        },
+        "RoutingProfileArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructRoutingProfileA5C41BAC",
+            "RoutingProfileArn",
+          ],
+        },
+        "SecurityProfileArns": [
+          {
+            "Fn::GetAtt": [
+              "AmazonConnectConstructSecurityProfileDA011FD5",
+              "SecurityProfileArn",
+            ],
+          },
+        ],
+        "Username": "User1",
+      },
+      "Type": "AWS::Connect::User",
+    },
     "AmazonConnectContentConstructAmazonConnectContentHierarchyGroupStackNestedStackAmazonConnectContentHierarchyGroupStackNestedStackResource8A175594": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "Parameters": {
-          "referencetoCreateAmazonConnectResourceStacktestAmazonConnectConstruct26581347Arn": {
+          "referencetoAmazonConnectResourceCreatorStacktestAmazonConnectConstruct406CF072Arn": {
             "Fn::GetAtt": [
               "AmazonConnectConstruct1C9DFEFB",
               "Arn",
@@ -982,7 +1382,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create hierarchy,
               {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-000000000000-us-east-1/e967c3688d53ed181107239495903d11cf6e9f98287c5cd4929dd5f3cbcc8fbb.json",
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/c250ea88c33453cb5cd029303f2a8bc19fda878b90d5cc3b07865720650ae70b.json",
             ],
           ],
         },
@@ -1040,7 +1440,7 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Create hierarchy,
 }
 `;
 
-exports[`CreateAmazonConnectResourceStack Matches the snapshot Not create data storage and hierarchy 1`] = `
+exports[`AmazonConnectResourceCreatorStack Matches the snapshot Not create data storage and hierarchy 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -1132,6 +1532,106 @@ exports[`CreateAmazonConnectResourceStack Matches the snapshot Not create data s
         "TimeZone": "UTC",
       },
       "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "AmazonConnectConstructQueue7C26EEF9": {
+      "Properties": {
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructHoursOfOperation59BBFAA0",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "AmazonConnectConstructRoutingProfileA5C41BAC": {
+      "Properties": {
+        "DefaultOutboundQueueArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructQueue7C26EEF9",
+            "QueueArn",
+          ],
+        },
+        "Description": "test",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "MediaConcurrencies": [
+          {
+            "Channel": "VOICE",
+            "Concurrency": 1,
+          },
+          {
+            "Channel": "CHAT",
+            "Concurrency": 2,
+          },
+        ],
+        "Name": "Test Ruting profile",
+      },
+      "Type": "AWS::Connect::RoutingProfile",
+    },
+    "AmazonConnectConstructSecurityProfileDA011FD5": {
+      "Properties": {
+        "Description": "Administrator Group",
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Permissions": [
+          "RoutingPolicies.Create",
+          "RoutingPolicies.Edit",
+          "RoutingPolicies.View",
+        ],
+        "SecurityProfileName": "Administrator",
+      },
+      "Type": "AWS::Connect::SecurityProfile",
+    },
+    "AmazonConnectConstructUser16E9DF1C7": {
+      "Properties": {
+        "IdentityInfo": {
+          "FirstName": "User",
+          "LastName": "Hello",
+        },
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Password": "122aJJJJ",
+        "PhoneConfig": {
+          "AfterContactWorkTimeLimit": 10,
+          "PhoneType": "SOFT_PHONE",
+        },
+        "RoutingProfileArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstructRoutingProfileA5C41BAC",
+            "RoutingProfileArn",
+          ],
+        },
+        "SecurityProfileArns": [
+          {
+            "Fn::GetAtt": [
+              "AmazonConnectConstructSecurityProfileDA011FD5",
+              "SecurityProfileArn",
+            ],
+          },
+        ],
+        "Username": "User1",
+      },
+      "Type": "AWS::Connect::User",
     },
   },
   "Rules": {

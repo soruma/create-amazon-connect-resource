@@ -1,5 +1,3 @@
-import * as cdk from 'aws-cdk-lib';
-
 import * as connect from 'aws-cdk-lib/aws-connect';
 import { Construct } from 'constructs';
 import { AmazonConnectContentHierarchyGroupStack } from './amazon-connect-content-hierarchy-group-stack';

@@ -77,6 +77,12 @@ importers:
         specifier: ~5.6.3
         version: 5.6.3
 
+  packages/get-cdk-context-parameter:
+    dependencies:
+      constructs:
+        specifier: ^10.4.2
+        version: 10.4.2
+
 packages:
 
   '@aws-cdk/asset-awscli-v1@2.2.236':

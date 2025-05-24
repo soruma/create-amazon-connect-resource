@@ -9,6 +9,7 @@
     "format": "biome format . --write && biome check . --write",
     "amazon-connect-creator": "pnpm --filter amazon-connect-creator",
     "amazon-connect-resource-creator": "pnpm --filter amazon-connect-resource-creator",
+    "get-cdk-context-parameter": "pnpm --filter get-cdk-context-parameter",
     "cleanup-generated-files": "ts-node bin/cleanup-generated-files.ts"
   },
   "keywords": ["amazon", "amazon connect", "cdk"],

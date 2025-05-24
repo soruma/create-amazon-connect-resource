@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
+import { getBooleanContext, getStringContext } from 'get-cdk-context-parameter';
 import { IdentityManagementType } from '../lib/amazon-connect-construct';
 import { AmazonConnectCreatorStack } from '../lib/amazon-connect-creator-stack';
-import { getBooleanContext, getStringContext } from './utils';
 
 const app = new cdk.App();
 

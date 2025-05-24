@@ -1,6 +1,6 @@
-import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 
-export const getBooleanContext = (app: cdk.App, key: string, options?: { default: boolean }): boolean => {
+export const getStringContext = (app: Construct, key: string, options?: { default: string }): string => {
   const context = app.node.tryGetContext(key);
   if (context) {
     return context;

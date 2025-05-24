@@ -3,3 +3,4 @@ packages:
 engineStrict: true
 onlyBuiltDependencies:
   - '@biomejs/biome'
+  - esbuild

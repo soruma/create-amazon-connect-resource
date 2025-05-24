@@ -83,7 +83,56 @@ export class AmazonConnectConstruct extends Construct {
       this.createInstanceStorageConfig();
     }
 
-    this.createBusinessHours();
+    const businessHours = this.createBusinessHours();
+
+    const queue = new connect.CfnQueue(this, 'Queue', {
+      instanceArn: this.connectInstance.attrArn,
+      name: 'Queue',
+      hoursOfOperationArn: businessHours.attrHoursOfOperationArn
+    });
+
+    const securityProfile = new connect.CfnSecurityProfile(this, 'SecurityProfile', {
+      instanceArn: this.connectInstance.attrArn,
+      securityProfileName: 'Administrator',
+      description: 'Administrator Group',
+      permissions: [
+        'RoutingPolicies.Create',
+        'RoutingPolicies.Edit',
+        'RoutingPolicies.View'
+      ]
+    })
+
+    const routingProfile = new connect.CfnRoutingProfile(this, 'RoutingProfile', {
+      instanceArn: this.connectInstance.attrArn,
+      defaultOutboundQueueArn: queue.attrQueueArn,
+      name: 'Test Ruting profile',
+      description: 'test',
+      mediaConcurrencies: [{
+        channel: 'VOICE',
+        concurrency: 1,
+      },{
+        channel: 'CHAT',
+        concurrency: 2,
+      }]
+    });
+
+    new connect.CfnUser(this, 'User1', {
+      instanceArn: this.connectInstance.attrArn,
+      username: 'User1',
+      password: '122aJJJJ',
+      identityInfo: {
+        firstName: 'User',
+        lastName: 'Hello',
+      },
+      phoneConfig: {
+        phoneType: 'SOFT_PHONE',
+        afterContactWorkTimeLimit: 10,
+      },
+      routingProfileArn: routingProfile.attrRoutingProfileArn, 
+      securityProfileArns: [
+        securityProfile.attrSecurityProfileArn
+      ]
+    });
   }
 
   createInstanceStorageConfig() {

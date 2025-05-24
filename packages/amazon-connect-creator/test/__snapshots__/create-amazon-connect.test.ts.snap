@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AmazonConnectResourceCreatorStack Identity management is Directory service 1`] = `
+exports[`AmazonConnectCreatorStack Identity management is Directory service 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -266,7 +266,7 @@ exports[`AmazonConnectResourceCreatorStack Identity management is Directory serv
       "DeletionPolicy": "Delete",
       "Properties": {
         "Parameters": {
-          "referencetoAmazonConnectResourceCreatorStacktestAmazonConnectConstruct406CF072Arn": {
+          "referencetoAmazonConnectCreatorStacktestAmazonConnectConstruct406CF072Arn": {
             "Fn::GetAtt": [
               "AmazonConnectConstruct1C9DFEFB",
               "Arn",
@@ -406,7 +406,7 @@ exports[`AmazonConnectResourceCreatorStack Identity management is Directory serv
 }
 `;
 
-exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create data storage and hierarchy 1`] = `
+exports[`AmazonConnectCreatorStack Matches the snapshot Create data storage and hierarchy 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -671,7 +671,7 @@ exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create data stor
       "DeletionPolicy": "Delete",
       "Properties": {
         "Parameters": {
-          "referencetoAmazonConnectResourceCreatorStacktestAmazonConnectConstruct406CF072Arn": {
+          "referencetoAmazonConnectCreatorStacktestAmazonConnectConstruct406CF072Arn": {
             "Fn::GetAtt": [
               "AmazonConnectConstruct1C9DFEFB",
               "Arn",
@@ -811,7 +811,7 @@ exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create data stor
 }
 `;
 
-exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create data storage, not create hierarchy 1`] = `
+exports[`AmazonConnectCreatorStack Matches the snapshot Create data storage, not create hierarchy 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -1170,7 +1170,7 @@ exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create data stor
 }
 `;
 
-exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create hierarchy, not create data storage 1`] = `
+exports[`AmazonConnectCreatorStack Matches the snapshot Create hierarchy, not create data storage 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
@@ -1367,7 +1367,7 @@ exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create hierarchy
       "DeletionPolicy": "Delete",
       "Properties": {
         "Parameters": {
-          "referencetoAmazonConnectResourceCreatorStacktestAmazonConnectConstruct406CF072Arn": {
+          "referencetoAmazonConnectCreatorStacktestAmazonConnectConstruct406CF072Arn": {
             "Fn::GetAtt": [
               "AmazonConnectConstruct1C9DFEFB",
               "Arn",
@@ -1440,7 +1440,7 @@ exports[`AmazonConnectResourceCreatorStack Matches the snapshot Create hierarchy
 }
 `;
 
-exports[`AmazonConnectResourceCreatorStack Matches the snapshot Not create data storage and hierarchy 1`] = `
+exports[`AmazonConnectCreatorStack Matches the snapshot Not create data storage and hierarchy 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {

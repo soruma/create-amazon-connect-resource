@@ -1,4 +1,4 @@
-# Create Amazon Connect resource stack
+# Create Amazon Connect stack
 
 This is a blank project for CDK development with TypeScript.
 

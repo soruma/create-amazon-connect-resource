@@ -5,7 +5,7 @@ import { Construct } from 'constructs';
 import { AmazonConnectConstruct, IdentityManagementType } from './amazon-connect-construct';
 import { AmazonConnectContentConstruct } from './amazon-connect-content-construct';
 
-interface AmazonConnectResourceCreatorStackProps extends cdk.StackProps {
+interface AmazonConnectCreatorStackProps extends cdk.StackProps {
   /**
    * Amazon Connect instance alias
    */
@@ -57,10 +57,10 @@ interface AmazonConnectResourceCreatorStackProps extends cdk.StackProps {
   businessHoursTimeZone: string;
 }
 
-export class AmazonConnectResourceCreatorStack extends cdk.Stack {
-  private props: AmazonConnectResourceCreatorStackProps;
+export class AmazonConnectCreatorStack extends cdk.Stack {
+  private props: AmazonConnectCreatorStackProps;
 
-  constructor(scope: Construct, id: string, props: AmazonConnectResourceCreatorStackProps) {
+  constructor(scope: Construct, id: string, props: AmazonConnectCreatorStackProps) {
     super(scope, id, props);
 
     this.props = props;

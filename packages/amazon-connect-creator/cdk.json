@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/amazon-connect-resource-creator.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/amazon-connect-creator.ts",
   "watch": {
     "include": [
       "**"

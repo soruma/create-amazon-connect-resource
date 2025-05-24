@@ -8,7 +8,7 @@ importers:
 
   .: {}
 
-  packages/amazon-connect-resource-creator:
+  packages/amazon-connect-creator:
     dependencies:
       aws-cdk-lib:
         specifier: 2.178.2

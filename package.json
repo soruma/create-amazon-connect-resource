@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "amazon-connect-resource-creator": "pnpm --filter amazon-connect-resource-creator"
+    "amazon-connect-creator": "pnpm --filter amazon-connect-creator"
   },
   "keywords": [
     "amazon",

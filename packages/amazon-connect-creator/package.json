@@ -1,8 +1,8 @@
 {
-  "name": "amazon-connect-resource-creator",
+  "name": "amazon-connect-creator",
   "version": "0.1.0",
   "bin": {
-    "amazon-connect-resource-creator": "bin/amazon-connect-resource-creator.js"
+    "amazon-connect-creator": "bin/amazon-connect-creator.js"
   },
   "scripts": {
     "build": "tsc",

@@ -4,7 +4,10 @@
   "description": "",
   "private": true,
   "scripts": {
-    "amazon-connect-creator": "pnpm --filter amazon-connect-creator"
+    "lint": "biome lint . && biome check .",
+    "format": "biome format . --write && biome check . --write",
+    "amazon-connect-creator": "pnpm --filter amazon-connect-creator",
+    "amazon-connect-resource-creator": "pnpm --filter amazon-connect-resource-creator"
   },
   "keywords": [
     "amazon",
@@ -18,5 +21,8 @@
     "npm": "use pnpm please!",
     "yarn": "use pnpm please!",
     "pnpm": ">=10.11.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
   }
 }

@@ -50,7 +50,7 @@
     {
       "include": ["*.test.ts", "**/__tests__/**"],
       "javascript": {
-        "globals": ["afterAll", "afterEach", "beforeAll", "beforeEach", "describe", "expect", "it", "jest", "test"]
+        "globals": ["afterAll", "afterEach", "beforeAll", "beforeEach", "describe", "expect", "it", "test"]
       }
     }
   ]

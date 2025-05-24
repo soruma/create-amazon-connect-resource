@@ -1,12 +1,19 @@
 import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
+import { test as baseTest, describe, expect, it } from 'vitest';
+
 import { AmazonConnectCreatorStack } from '../lib/amazon-connect-creator-stack';
+
+const test = baseTest.extend<{
+  app: cdk.App;
+}>({
+  // biome-ignore lint: lint/correctness/noEmptyPattern
+  app: ({}, use) => use(new cdk.App()),
+});
 
 describe('AmazonConnectCreatorStack', () => {
   describe('Matches the snapshot', () => {
-    test('Create data storage and hierarchy', () => {
-      const app = new cdk.App();
-
+    test('Create data storage and hierarchy', ({ app }) => {
       const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {
         env: {
           account: '000000000000',
@@ -27,9 +34,7 @@ describe('AmazonConnectCreatorStack', () => {
       expect(template.toJSON()).toMatchSnapshot();
     });
 
-    test('Create data storage, not create hierarchy', () => {
-      const app = new cdk.App();
-
+    test('Create data storage, not create hierarchy', ({ app }) => {
       const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {
         env: {
           account: '000000000000',
@@ -50,7 +55,7 @@ describe('AmazonConnectCreatorStack', () => {
       expect(template.toJSON()).toMatchSnapshot();
     });
 
-    test('Create hierarchy, not create data storage', () => {
+    it('Create hierarchy, not create data storage', () => {
       const app = new cdk.App();
 
       const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {
@@ -73,7 +78,7 @@ describe('AmazonConnectCreatorStack', () => {
       expect(template.toJSON()).toMatchSnapshot();
     });
 
-    test('Not create data storage and hierarchy', () => {
+    it('Not create data storage and hierarchy', () => {
       const app = new cdk.App();
 
       const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {
@@ -97,7 +102,7 @@ describe('AmazonConnectCreatorStack', () => {
     });
   });
 
-  test('Identity management is Directory service', () => {
+  it('Identity management is Directory service', () => {
     const app = new cdk.App();
 
     const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {

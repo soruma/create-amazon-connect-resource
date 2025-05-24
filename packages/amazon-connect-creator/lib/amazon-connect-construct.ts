@@ -1,11 +1,11 @@
+import { readFileSync } from 'node:fs';
+import * as path from 'node:path';
 import { Construct } from 'constructs';
-import { readFile, readFileSync } from 'fs';
-import * as path  from 'path';
 
-import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as connect from 'aws-cdk-lib/aws-connect';
-import * as kms from 'aws-cdk-lib/aws-kms';
 import * as iam from 'aws-cdk-lib/aws-iam';
+import * as kms from 'aws-cdk-lib/aws-kms';
+import * as s3 from 'aws-cdk-lib/aws-s3';
 
 export type IdentityManagementType = 'SAML' | 'CONNECT_MANAGED' | 'EXISTING_DIRECTORY';
 
@@ -87,7 +87,7 @@ export class AmazonConnectConstruct extends Construct {
   }
 
   createInstanceStorageConfig() {
-    if (this.props.dataStorageBucket === undefined) return
+    if (this.props.dataStorageBucket === undefined) return;
 
     const encriptionKey = kms.Key.fromLookup(this, 'EncryptKeyLookup', {
       aliasName: 'alias/aws/connect',
@@ -102,11 +102,11 @@ export class AmazonConnectConstruct extends Construct {
         bucketPrefix: 'CallRecordings',
         encryptionConfig: {
           encryptionType: 'KMS',
-          keyId: encriptionKey.keyArn
-        }
-      }
+          keyId: encriptionKey.keyArn,
+        },
+      },
     });
-  
+
     new connect.CfnInstanceStorageConfig(this, 'ChatTranscriptsStorageConfig', {
       instanceArn: this.connectInstance.attrArn,
       resourceType: 'CHAT_TRANSCRIPTS',
@@ -116,9 +116,9 @@ export class AmazonConnectConstruct extends Construct {
         bucketPrefix: 'ChatTranscripts',
         encryptionConfig: {
           encryptionType: 'KMS',
-          keyId: encriptionKey.keyArn
-        }
-      }
+          keyId: encriptionKey.keyArn,
+        },
+      },
     });
   }
 
@@ -130,7 +130,7 @@ export class AmazonConnectConstruct extends Construct {
       instanceArn: this.connectInstance.attrArn,
       name: 'Business Hour',
       config,
-      timeZone: this.props.businessHoursTimeZone
+      timeZone: this.props.businessHoursTimeZone,
     });
   }
 }

@@ -36,8 +36,8 @@ export class AmazonConnectContentConstruct extends Construct {
         },
         levelTwo: {
           name: 'Team',
-        }
-      }
+        },
+      },
     });
 
     new AmazonConnectContentHierarchyGroupStack(this, 'AmazonConnectContentHierarchyGroupStack', {

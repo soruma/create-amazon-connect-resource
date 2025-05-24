@@ -66,11 +66,11 @@ export class AmazonConnectCreatorStack extends cdk.Stack {
     this.props = props;
 
     let dataStorageBucket: s3.Bucket | undefined;
-    
+
     if (this.props.createDataStorageBucket) {
       dataStorageBucket = new s3.Bucket(this, 'DataStorageBucket', {
         bucketName: `connect-${this.props.connectInstanceAlias}`,
-        encryption: s3.BucketEncryption.S3_MANAGED
+        encryption: s3.BucketEncryption.S3_MANAGED,
       });
     }
 
@@ -83,12 +83,12 @@ export class AmazonConnectCreatorStack extends cdk.Stack {
       identityManagementType: this.props.identityManagementType,
       directoryId: this.props.directoryId,
       dataStorageBucket,
-      businessHoursTimeZone: this.props.businessHoursTimeZone
+      businessHoursTimeZone: this.props.businessHoursTimeZone,
     });
 
     new AmazonConnectContentConstruct(this, 'AmazonConnectContentConstruct', {
       connectInstanceArn: amazonConnect.connectInstance.attrArn,
-      createHierarchy: props.createHierarchy
+      createHierarchy: props.createHierarchy,
     });
   }
 }

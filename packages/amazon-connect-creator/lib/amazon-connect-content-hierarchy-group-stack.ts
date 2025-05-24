@@ -26,13 +26,13 @@ export class AmazonConnectContentHierarchyGroupStack extends cdk.NestedStack {
     new connect.CfnUserHierarchyGroup(this, 'SalesDepartmentTeam1ContactUserHierarchyGroup', {
       instanceArn: this.props.connectInstanceArn,
       name: 'Team 1',
-      parentGroupArn: salesDepartment.attrUserHierarchyGroupArn
+      parentGroupArn: salesDepartment.attrUserHierarchyGroupArn,
     });
 
     new connect.CfnUserHierarchyGroup(this, 'SalesDepartmentTeam2ContactUserHierarchyGroup', {
       instanceArn: this.props.connectInstanceArn,
       name: 'Team 2',
-      parentGroupArn: salesDepartment.attrUserHierarchyGroupArn
+      parentGroupArn: salesDepartment.attrUserHierarchyGroupArn,
     });
 
     const supportDepartment = new connect.CfnUserHierarchyGroup(this, 'SupportDepartmentContactUserHierarchyGroup', {
@@ -43,7 +43,7 @@ export class AmazonConnectContentHierarchyGroupStack extends cdk.NestedStack {
     new connect.CfnUserHierarchyGroup(this, 'SupportDepartmentTeam1ContactUserHierarchyGroup', {
       instanceArn: this.props.connectInstanceArn,
       name: 'Team 1',
-      parentGroupArn: supportDepartment.attrUserHierarchyGroupArn
+      parentGroupArn: supportDepartment.attrUserHierarchyGroupArn,
     });
   }
 }

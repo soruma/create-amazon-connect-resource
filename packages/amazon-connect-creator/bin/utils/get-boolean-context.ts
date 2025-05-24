@@ -11,4 +11,4 @@ export const getBooleanContext = (app: cdk.App, key: string, options?: { default
   }
 
   return options.default;
-}
+};

@@ -6,14 +6,9 @@
   "scripts": {
     "lint": "biome lint . && biome check .",
     "format": "biome format . --write && biome check . --write",
-    "amazon-connect-creator": "pnpm --filter amazon-connect-creator",
-    "amazon-connect-resource-creator": "pnpm --filter amazon-connect-resource-creator"
+    "amazon-connect-creator": "pnpm --filter amazon-connect-creator"
   },
-  "keywords": [
-    "amazon",
-    "amazon connect",
-    "cdk"
-  ],
+  "keywords": ["amazon", "amazon connect", "cdk"],
   "author": "soruma",
   "license": "MIT",
   "packageManager": "pnpm@10.11.0",

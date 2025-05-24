@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
+import { IdentityManagementType } from '../lib/amazon-connect-construct';
 import { AmazonConnectCreatorStack } from '../lib/amazon-connect-creator-stack';
 import { getBooleanContext, getStringContext } from './utils';
-import { IdentityManagementType } from '../lib/amazon-connect-construct';
 
 const app = new cdk.App();
 
@@ -16,7 +16,9 @@ const inboundCalls = getBooleanContext(app, 'inboundCalls', { default: true });
 const outboundCalls = getBooleanContext(app, 'outboundCalls', { default: true });
 const contactflowLogs = getBooleanContext(app, 'contactflowLogs', { default: true });
 const autoResolveBestVoices = getBooleanContext(app, 'autoResolveBestVoices', { default: true });
-const identityManagementType = getStringContext(app, 'identityManagementType', { default: 'CONNECT_MANAGED' }) as IdentityManagementType;
+const identityManagementType = getStringContext(app, 'identityManagementType', {
+  default: 'CONNECT_MANAGED',
+}) as IdentityManagementType;
 const directoryId = app.node.tryGetContext('directoryId');
 
 if (connectInstanceAlias === undefined) {
@@ -26,7 +28,7 @@ if (connectInstanceAlias === undefined) {
 new AmazonConnectCreatorStack(app, `AmazonConnectResourceStack-${connectInstanceAlias}`, {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: process.env.CDK_DEFAULT_REGION
+    region: process.env.CDK_DEFAULT_REGION,
   },
   connectInstanceAlias,
   inboundCalls,

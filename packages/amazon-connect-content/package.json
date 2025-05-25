@@ -1,8 +1,8 @@
 {
-  "name": "amazon-connect-resource-creator",
+  "name": "amazon-connect-content",
   "version": "0.1.0",
   "bin": {
-    "amazon-connect-resource-creator": "bin/amazon-connect-resource-creator.js"
+    "amazon-connect-content": "bin/amazon-connect-content.js"
   },
   "scripts": {
     "build": "tsc",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "aws-cdk-lib": "2.196.0",
-    "constructs": "^10.0.0"
+    "constructs": "^10.0.0",
+    "get-cdk-context-parameter": "workspace:^"
   }
 }

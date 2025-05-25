@@ -1,11 +1,8 @@
-import { readFileSync } from 'node:fs';
-import * as path from 'node:path';
-import { Construct } from 'constructs';
-
 import * as connect from 'aws-cdk-lib/aws-connect';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as kms from 'aws-cdk-lib/aws-kms';
 import * as s3 from 'aws-cdk-lib/aws-s3';
+import { Construct } from 'constructs';
 
 export type IdentityManagementType = 'SAML' | 'CONNECT_MANAGED' | 'EXISTING_DIRECTORY';
 
@@ -49,11 +46,6 @@ interface AmazonConnectConstructProps {
    * Amazon connect data storage
    */
   dataStorageBucket?: s3.Bucket;
-
-  /**
-   * business hours time zone
-   */
-  businessHoursTimeZone: string;
 }
 
 export class AmazonConnectConstruct extends Construct {
@@ -82,8 +74,6 @@ export class AmazonConnectConstruct extends Construct {
 
       this.createInstanceStorageConfig();
     }
-
-    this.createBusinessHours();
   }
 
   createInstanceStorageConfig() {
@@ -119,18 +109,6 @@ export class AmazonConnectConstruct extends Construct {
           keyId: encriptionKey.keyArn,
         },
       },
-    });
-  }
-
-  createBusinessHours(): connect.CfnHoursOfOperation {
-    const data = readFileSync(path.join(__dirname, '..', 'config', 'business_hours.json'), { encoding: 'utf8' });
-    const config = JSON.parse(data) as connect.CfnHoursOfOperation.HoursOfOperationConfigProperty[];
-
-    return new connect.CfnHoursOfOperation(this, 'HoursOfOperation', {
-      instanceArn: this.connectInstance.attrArn,
-      name: 'Business Hour',
-      config,
-      timeZone: this.props.businessHoursTimeZone,
     });
   }
 }

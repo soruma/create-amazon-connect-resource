@@ -2,7 +2,7 @@ import * as cdk from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import { test as baseTest, describe, expect, it } from 'vitest';
 
-import { AmazonConnectCreatorStack } from '../lib/amazon-connect-creator-stack';
+import { AmazonConnectStack } from '../lib/amazon-connect-stack';
 
 const test = baseTest.extend<{
   app: cdk.App;
@@ -11,10 +11,10 @@ const test = baseTest.extend<{
   app: ({}, use) => use(new cdk.App()),
 });
 
-describe('AmazonConnectCreatorStack', () => {
+describe('AmazonConnectStack', () => {
   describe('Matches the snapshot', () => {
     test('Create data storage and hierarchy', ({ app }) => {
-      const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {
+      const stack = new AmazonConnectStack(app, 'AmazonConnectStack-test', {
         env: {
           account: '000000000000',
           region: 'us-east-1',
@@ -35,7 +35,7 @@ describe('AmazonConnectCreatorStack', () => {
     });
 
     test('Create data storage, not create hierarchy', ({ app }) => {
-      const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {
+      const stack = new AmazonConnectStack(app, 'AmazonConnectStack-test', {
         env: {
           account: '000000000000',
           region: 'us-east-1',
@@ -58,7 +58,7 @@ describe('AmazonConnectCreatorStack', () => {
     it('Create hierarchy, not create data storage', () => {
       const app = new cdk.App();
 
-      const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {
+      const stack = new AmazonConnectStack(app, 'AmazonConnectStack-test', {
         env: {
           account: '000000000000',
           region: 'us-east-1',
@@ -81,7 +81,7 @@ describe('AmazonConnectCreatorStack', () => {
     it('Not create data storage and hierarchy', () => {
       const app = new cdk.App();
 
-      const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {
+      const stack = new AmazonConnectStack(app, 'AmazonConnectStack-test', {
         env: {
           account: '000000000000',
           region: 'us-east-1',
@@ -105,7 +105,7 @@ describe('AmazonConnectCreatorStack', () => {
   it('Identity management is Directory service', () => {
     const app = new cdk.App();
 
-    const stack = new AmazonConnectCreatorStack(app, 'AmazonConnectCreatorStack-test', {
+    const stack = new AmazonConnectStack(app, 'AmazonConnectStack-test', {
       env: {
         account: '000000000000',
         region: 'us-east-1',

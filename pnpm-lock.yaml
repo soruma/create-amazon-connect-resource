@@ -24,7 +24,7 @@ importers:
         specifier: ^3.1.4
         version: 3.1.4(@types/node@22.15.21)
 
-  packages/amazon-connect-creator:
+  packages/amazon-connect:
     dependencies:
       aws-cdk-lib:
         specifier: 2.178.2
@@ -32,6 +32,9 @@ importers:
       constructs:
         specifier: ^10.4.2
         version: 10.4.2
+      get-cdk-context-parameter:
+        specifier: workspace:^
+        version: link:../get-cdk-context-parameter
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -45,9 +48,6 @@ importers:
       aws-cdk:
         specifier: 2.178.2
         version: 2.178.2
-      get-cdk-context-parameter:
-        specifier: workspace:^
-        version: link:../get-cdk-context-parameter
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.15.21)(typescript@5.7.3)
@@ -55,7 +55,7 @@ importers:
         specifier: ~5.7.3
         version: 5.7.3
 
-  packages/amazon-connect-resource-creator:
+  packages/amazon-connect-content:
     dependencies:
       aws-cdk-lib:
         specifier: 2.196.0
@@ -63,6 +63,9 @@ importers:
       constructs:
         specifier: ^10.0.0
         version: 10.4.2
+      get-cdk-context-parameter:
+        specifier: workspace:^
+        version: link:../get-cdk-context-parameter
     devDependencies:
       '@types/node':
         specifier: 22.7.9

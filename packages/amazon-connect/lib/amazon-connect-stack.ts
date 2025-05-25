@@ -1,11 +1,11 @@
 import * as cdk from 'aws-cdk-lib';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-
 import { Construct } from 'constructs';
+
 import { AmazonConnectConstruct, IdentityManagementType } from './amazon-connect-construct';
 import { AmazonConnectContentConstruct } from './amazon-connect-content-construct';
 
-interface AmazonConnectCreatorStackProps extends cdk.StackProps {
+interface AmazonConnectStackProps extends cdk.StackProps {
   /**
    * Amazon Connect instance alias
    */
@@ -57,10 +57,10 @@ interface AmazonConnectCreatorStackProps extends cdk.StackProps {
   businessHoursTimeZone: string;
 }
 
-export class AmazonConnectCreatorStack extends cdk.Stack {
-  private props: AmazonConnectCreatorStackProps;
+export class AmazonConnectStack extends cdk.Stack {
+  private props: AmazonConnectStackProps;
 
-  constructor(scope: Construct, id: string, props: AmazonConnectCreatorStackProps) {
+  constructor(scope: Construct, id: string, props: AmazonConnectStackProps) {
     super(scope, id, props);
 
     this.props = props;
@@ -69,7 +69,7 @@ export class AmazonConnectCreatorStack extends cdk.Stack {
 
     if (this.props.createDataStorageBucket) {
       dataStorageBucket = new s3.Bucket(this, 'DataStorageBucket', {
-        bucketName: `connect-${this.props.connectInstanceAlias}`,
+        bucketName: `amazon-connect-${this.props.connectInstanceAlias}`,
         encryption: s3.BucketEncryption.S3_MANAGED,
       });
     }
@@ -83,12 +83,17 @@ export class AmazonConnectCreatorStack extends cdk.Stack {
       identityManagementType: this.props.identityManagementType,
       directoryId: this.props.directoryId,
       dataStorageBucket,
-      businessHoursTimeZone: this.props.businessHoursTimeZone,
     });
 
     new AmazonConnectContentConstruct(this, 'AmazonConnectContentConstruct', {
       connectInstanceArn: amazonConnect.connectInstance.attrArn,
       createHierarchy: props.createHierarchy,
+      businessHoursTimeZone: this.props.businessHoursTimeZone,
+    });
+
+    new cdk.CfnOutput(this, 'AmazonConnectInstanceARN', {
+      exportName: `AmazonConnectInstanceARN-${this.props.connectInstanceAlias}`,
+      value: amazonConnect.connectInstance.attrArn,
     });
   }
 }

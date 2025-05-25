@@ -1,0 +1,1230 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AmazonConnectStack > Identity management is Directory service 1`] = `
+{
+  "Outputs": {
+    "AmazonConnectInstanceARN": {
+      "Export": {
+        "Name": "AmazonConnectInstanceARN-test",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "AmazonConnectConstruct1C9DFEFB",
+          "Arn",
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AmazonConnectConstruct1C9DFEFB": {
+      "Properties": {
+        "Attributes": {
+          "AutoResolveBestVoices": true,
+          "ContactflowLogs": true,
+          "InboundCalls": true,
+          "OutboundCalls": true,
+        },
+        "DirectoryId": "d-0000000000",
+        "IdentityManagementType": "EXISTING_DIRECTORY",
+        "InstanceAlias": "test",
+      },
+      "Type": "AWS::Connect::Instance",
+    },
+    "AmazonConnectConstructCallRecordingsStorageConfig2138FB32": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "ResourceType": "CALL_RECORDINGS",
+        "S3Config": {
+          "BucketName": {
+            "Ref": "DataStorageBucket1A195487",
+          },
+          "BucketPrefix": "CallRecordings",
+          "EncryptionConfig": {
+            "EncryptionType": "KMS",
+            "KeyId": {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":kms:us-east-1:000000000000:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+                ],
+              ],
+            },
+          },
+        },
+        "StorageType": "S3",
+      },
+      "Type": "AWS::Connect::InstanceStorageConfig",
+    },
+    "AmazonConnectConstructChatTranscriptsStorageConfig0CCF0AA9": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "ResourceType": "CHAT_TRANSCRIPTS",
+        "S3Config": {
+          "BucketName": {
+            "Ref": "DataStorageBucket1A195487",
+          },
+          "BucketPrefix": "ChatTranscripts",
+          "EncryptionConfig": {
+            "EncryptionType": "KMS",
+            "KeyId": {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":kms:us-east-1:000000000000:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+                ],
+              ],
+            },
+          },
+        },
+        "StorageType": "S3",
+      },
+      "Type": "AWS::Connect::InstanceStorageConfig",
+    },
+    "AmazonConnectContentConstructAmazonConnectContentHierarchyGroupStackNestedStackAmazonConnectContentHierarchyGroupStackNestedStackResource8A175594": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Parameters": {
+          "referencetoAmazonConnectStacktestAmazonConnectConstruct7DDFD0C2Arn": {
+            "Fn::GetAtt": [
+              "AmazonConnectConstruct1C9DFEFB",
+              "Arn",
+            ],
+          },
+        },
+        "TemplateURL": {
+          "Fn::Join": [
+            "",
+            [
+              "https://s3.us-east-1.",
+              {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/df2343f46b2ee49908db0233e0fcbe84beaa945e30f4b3c19b805ad3f8126cb3.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AmazonConnectContentConstructDepartmentUserHierarchyStructure9FF66031": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "UserHierarchyStructure": {
+          "LevelOne": {
+            "Name": "Department",
+          },
+          "LevelTwo": {
+            "Name": "Team",
+          },
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyStructure",
+    },
+    "AmazonConnectContentConstructHoursOfOperation4BF09A0C": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Business Hour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "DataStorageBucket1A195487": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256",
+              },
+            },
+          ],
+        },
+        "BucketName": "amazon-connect-test",
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "DataStorageBucketPolicyAD94CA11": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "DataStorageBucket1A195487",
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "connect.amazonaws.com",
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "DataStorageBucket1A195487",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "DataStorageBucket1A195487",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`AmazonConnectStack > Matches the snapshot > Create data storage and hierarchy 1`] = `
+{
+  "Outputs": {
+    "AmazonConnectInstanceARN": {
+      "Export": {
+        "Name": "AmazonConnectInstanceARN-test",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "AmazonConnectConstruct1C9DFEFB",
+          "Arn",
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AmazonConnectConstruct1C9DFEFB": {
+      "Properties": {
+        "Attributes": {
+          "AutoResolveBestVoices": true,
+          "ContactflowLogs": true,
+          "InboundCalls": true,
+          "OutboundCalls": true,
+        },
+        "IdentityManagementType": "CONNECT_MANAGED",
+        "InstanceAlias": "test",
+      },
+      "Type": "AWS::Connect::Instance",
+    },
+    "AmazonConnectConstructCallRecordingsStorageConfig2138FB32": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "ResourceType": "CALL_RECORDINGS",
+        "S3Config": {
+          "BucketName": {
+            "Ref": "DataStorageBucket1A195487",
+          },
+          "BucketPrefix": "CallRecordings",
+          "EncryptionConfig": {
+            "EncryptionType": "KMS",
+            "KeyId": {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":kms:us-east-1:000000000000:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+                ],
+              ],
+            },
+          },
+        },
+        "StorageType": "S3",
+      },
+      "Type": "AWS::Connect::InstanceStorageConfig",
+    },
+    "AmazonConnectConstructChatTranscriptsStorageConfig0CCF0AA9": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "ResourceType": "CHAT_TRANSCRIPTS",
+        "S3Config": {
+          "BucketName": {
+            "Ref": "DataStorageBucket1A195487",
+          },
+          "BucketPrefix": "ChatTranscripts",
+          "EncryptionConfig": {
+            "EncryptionType": "KMS",
+            "KeyId": {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":kms:us-east-1:000000000000:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+                ],
+              ],
+            },
+          },
+        },
+        "StorageType": "S3",
+      },
+      "Type": "AWS::Connect::InstanceStorageConfig",
+    },
+    "AmazonConnectContentConstructAmazonConnectContentHierarchyGroupStackNestedStackAmazonConnectContentHierarchyGroupStackNestedStackResource8A175594": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Parameters": {
+          "referencetoAmazonConnectStacktestAmazonConnectConstruct7DDFD0C2Arn": {
+            "Fn::GetAtt": [
+              "AmazonConnectConstruct1C9DFEFB",
+              "Arn",
+            ],
+          },
+        },
+        "TemplateURL": {
+          "Fn::Join": [
+            "",
+            [
+              "https://s3.us-east-1.",
+              {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/df2343f46b2ee49908db0233e0fcbe84beaa945e30f4b3c19b805ad3f8126cb3.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AmazonConnectContentConstructDepartmentUserHierarchyStructure9FF66031": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "UserHierarchyStructure": {
+          "LevelOne": {
+            "Name": "Department",
+          },
+          "LevelTwo": {
+            "Name": "Team",
+          },
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyStructure",
+    },
+    "AmazonConnectContentConstructHoursOfOperation4BF09A0C": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Business Hour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "DataStorageBucket1A195487": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256",
+              },
+            },
+          ],
+        },
+        "BucketName": "amazon-connect-test",
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "DataStorageBucketPolicyAD94CA11": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "DataStorageBucket1A195487",
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "connect.amazonaws.com",
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "DataStorageBucket1A195487",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "DataStorageBucket1A195487",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`AmazonConnectStack > Matches the snapshot > Create data storage, not create hierarchy 1`] = `
+{
+  "Outputs": {
+    "AmazonConnectInstanceARN": {
+      "Export": {
+        "Name": "AmazonConnectInstanceARN-test",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "AmazonConnectConstruct1C9DFEFB",
+          "Arn",
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AmazonConnectConstruct1C9DFEFB": {
+      "Properties": {
+        "Attributes": {
+          "AutoResolveBestVoices": true,
+          "ContactflowLogs": true,
+          "InboundCalls": true,
+          "OutboundCalls": true,
+        },
+        "IdentityManagementType": "CONNECT_MANAGED",
+        "InstanceAlias": "test",
+      },
+      "Type": "AWS::Connect::Instance",
+    },
+    "AmazonConnectConstructCallRecordingsStorageConfig2138FB32": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "ResourceType": "CALL_RECORDINGS",
+        "S3Config": {
+          "BucketName": {
+            "Ref": "DataStorageBucket1A195487",
+          },
+          "BucketPrefix": "CallRecordings",
+          "EncryptionConfig": {
+            "EncryptionType": "KMS",
+            "KeyId": {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":kms:us-east-1:000000000000:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+                ],
+              ],
+            },
+          },
+        },
+        "StorageType": "S3",
+      },
+      "Type": "AWS::Connect::InstanceStorageConfig",
+    },
+    "AmazonConnectConstructChatTranscriptsStorageConfig0CCF0AA9": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "ResourceType": "CHAT_TRANSCRIPTS",
+        "S3Config": {
+          "BucketName": {
+            "Ref": "DataStorageBucket1A195487",
+          },
+          "BucketPrefix": "ChatTranscripts",
+          "EncryptionConfig": {
+            "EncryptionType": "KMS",
+            "KeyId": {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:",
+                  {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":kms:us-east-1:000000000000:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+                ],
+              ],
+            },
+          },
+        },
+        "StorageType": "S3",
+      },
+      "Type": "AWS::Connect::InstanceStorageConfig",
+    },
+    "AmazonConnectContentConstructHoursOfOperation4BF09A0C": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Business Hour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "DataStorageBucket1A195487": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [
+            {
+              "ServerSideEncryptionByDefault": {
+                "SSEAlgorithm": "AES256",
+              },
+            },
+          ],
+        },
+        "BucketName": "amazon-connect-test",
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "DataStorageBucketPolicyAD94CA11": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "DataStorageBucket1A195487",
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:DeleteObject*",
+                "s3:PutObject",
+                "s3:PutObjectLegalHold",
+                "s3:PutObjectRetention",
+                "s3:PutObjectTagging",
+                "s3:PutObjectVersionTagging",
+                "s3:Abort*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "connect.amazonaws.com",
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "DataStorageBucket1A195487",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "DataStorageBucket1A195487",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`AmazonConnectStack > Matches the snapshot > Create hierarchy, not create data storage 1`] = `
+{
+  "Outputs": {
+    "AmazonConnectInstanceARN": {
+      "Export": {
+        "Name": "AmazonConnectInstanceARN-test",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "AmazonConnectConstruct1C9DFEFB",
+          "Arn",
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AmazonConnectConstruct1C9DFEFB": {
+      "Properties": {
+        "Attributes": {
+          "AutoResolveBestVoices": true,
+          "ContactflowLogs": true,
+          "InboundCalls": true,
+          "OutboundCalls": true,
+        },
+        "IdentityManagementType": "CONNECT_MANAGED",
+        "InstanceAlias": "test",
+      },
+      "Type": "AWS::Connect::Instance",
+    },
+    "AmazonConnectContentConstructAmazonConnectContentHierarchyGroupStackNestedStackAmazonConnectContentHierarchyGroupStackNestedStackResource8A175594": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "Parameters": {
+          "referencetoAmazonConnectStacktestAmazonConnectConstruct7DDFD0C2Arn": {
+            "Fn::GetAtt": [
+              "AmazonConnectConstruct1C9DFEFB",
+              "Arn",
+            ],
+          },
+        },
+        "TemplateURL": {
+          "Fn::Join": [
+            "",
+            [
+              "https://s3.us-east-1.",
+              {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/df2343f46b2ee49908db0233e0fcbe84beaa945e30f4b3c19b805ad3f8126cb3.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "AmazonConnectContentConstructDepartmentUserHierarchyStructure9FF66031": {
+      "Properties": {
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "UserHierarchyStructure": {
+          "LevelOne": {
+            "Name": "Department",
+          },
+          "LevelTwo": {
+            "Name": "Team",
+          },
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyStructure",
+    },
+    "AmazonConnectContentConstructHoursOfOperation4BF09A0C": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Business Hour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`AmazonConnectStack > Matches the snapshot > Not create data storage and hierarchy 1`] = `
+{
+  "Outputs": {
+    "AmazonConnectInstanceARN": {
+      "Export": {
+        "Name": "AmazonConnectInstanceARN-test",
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "AmazonConnectConstruct1C9DFEFB",
+          "Arn",
+        ],
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AmazonConnectConstruct1C9DFEFB": {
+      "Properties": {
+        "Attributes": {
+          "AutoResolveBestVoices": true,
+          "ContactflowLogs": true,
+          "InboundCalls": true,
+          "OutboundCalls": true,
+        },
+        "IdentityManagementType": "CONNECT_MANAGED",
+        "InstanceAlias": "test",
+      },
+      "Type": "AWS::Connect::Instance",
+    },
+    "AmazonConnectContentConstructHoursOfOperation4BF09A0C": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": {
+          "Fn::GetAtt": [
+            "AmazonConnectConstruct1C9DFEFB",
+            "Arn",
+          ],
+        },
+        "Name": "Business Hour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;

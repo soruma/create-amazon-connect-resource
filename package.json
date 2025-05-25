@@ -7,8 +7,8 @@
     "test": "vitest",
     "lint": "biome lint . && biome check .",
     "format": "biome format . --write && biome check . --write",
-    "amazon-connect-creator": "pnpm --filter amazon-connect-creator",
-    "amazon-connect-resource-creator": "pnpm --filter amazon-connect-resource-creator",
+    "amazon-connect": "pnpm --filter amazon-connect",
+    "amazon-connect-content": "pnpm --filter amazon-connect-content",
     "get-cdk-context-parameter": "pnpm --filter get-cdk-context-parameter",
     "cleanup-generated-files": "ts-node bin/cleanup-generated-files.ts"
   },

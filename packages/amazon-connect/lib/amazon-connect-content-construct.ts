@@ -1,5 +1,8 @@
+import { readFileSync } from 'node:fs';
+import * as path from 'node:path';
 import * as connect from 'aws-cdk-lib/aws-connect';
 import { Construct } from 'constructs';
+
 import { AmazonConnectContentHierarchyGroupStack } from './amazon-connect-content-hierarchy-group-stack';
 
 interface AmazonConnectContentConstructProps {
@@ -12,6 +15,11 @@ interface AmazonConnectContentConstructProps {
    * Create sample Amazon Connect organization hierarchies
    */
   createHierarchy: boolean;
+
+  /**
+   * business hours time zone
+   */
+  businessHoursTimeZone: string;
 }
 
 export class AmazonConnectContentConstruct extends Construct {
@@ -22,9 +30,23 @@ export class AmazonConnectContentConstruct extends Construct {
 
     this.props = props;
 
+    this.createBusinessHours();
+
     if (this.props.createHierarchy) {
       this.createHierarchy();
     }
+  }
+
+  createBusinessHours(): connect.CfnHoursOfOperation {
+    const data = readFileSync(path.join(__dirname, '..', 'config', 'business_hours.json'), { encoding: 'utf8' });
+    const config = JSON.parse(data) as connect.CfnHoursOfOperation.HoursOfOperationConfigProperty[];
+
+    return new connect.CfnHoursOfOperation(this, 'HoursOfOperation', {
+      instanceArn: this.props.connectInstanceArn,
+      name: 'Business Hour',
+      config,
+      timeZone: this.props.businessHoursTimeZone,
+    });
   }
 
   createHierarchy() {

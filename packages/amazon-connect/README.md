@@ -32,10 +32,6 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
   - Required if `identityManagementType` is `EXISTING_DIRECTORY`, format: `d-0000000000`
 - `createDataStorageBucket` (Boolean) Default: `true`
   - Whether to store call and chat records in storage
-- `businessHoursTimeZone` (String) Deault: `UTC`
-  - Business hours time zone
-- `createHierarchy` (Boolean) Default: `false`
-  - Create sample Amazon Connect organization hierarchies
 
 ## Create resources
 

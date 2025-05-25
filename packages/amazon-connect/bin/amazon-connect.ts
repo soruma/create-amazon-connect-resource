@@ -9,8 +9,6 @@ const app = new cdk.App();
 
 const connectInstanceAlias = getStringContext(app, 'connectInstanceAlias');
 const createDataStorageBucket = getBooleanContext(app, 'createDataStorageBucket', { default: true });
-const businessHoursTimeZone = getStringContext(app, 'businessHoursTimeZone', { default: 'UTC' });
-const createHierarchy = getBooleanContext(app, 'createHierarchy', { default: false });
 
 const inboundCalls = getBooleanContext(app, 'inboundCalls', { default: true });
 const outboundCalls = getBooleanContext(app, 'outboundCalls', { default: true });
@@ -38,6 +36,4 @@ new AmazonConnectStack(app, `AmazonConnectStack-${connectInstanceAlias}`, {
   identityManagementType,
   directoryId,
   createDataStorageBucket,
-  businessHoursTimeZone,
-  createHierarchy,
 });

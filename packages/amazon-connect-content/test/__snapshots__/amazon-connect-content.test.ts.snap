@@ -1,0 +1,306 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AmazonConnectHierarchyGroupStackNestedStackAmazonConnectHierarchyGroupStackNestedStackResource3C4DFE15": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "TemplateURL": {
+          "Fn::Join": [
+            "",
+            [
+              "https://s3.us-east-1.",
+              {
+                "Ref": "AWS::URLSuffix",
+              },
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/96a200d3577889dc7d22cac29489c89c73dd4d713b2df3ad8e111f4f36675ae4.json",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::CloudFormation::Stack",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "DepartmentUserHierarchyStructure": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "UserHierarchyStructure": {
+          "LevelOne": {
+            "Name": "Department",
+          },
+          "LevelTwo": {
+            "Name": "Team",
+          },
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyStructure",
+    },
+    "HoursOfOperation": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Business Hour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 2`] = `
+{
+  "Resources": {
+    "SalesDepartmentContactUserHierarchyGroup": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Sales department",
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "SalesDepartmentTeam1ContactUserHierarchyGroup": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Team 1",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "SalesDepartmentContactUserHierarchyGroup",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "SalesDepartmentTeam2ContactUserHierarchyGroup": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Team 2",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "SalesDepartmentContactUserHierarchyGroup",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "SupportDepartmentContactUserHierarchyGroup": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Support department",
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "SupportDepartmentTeam1ContactUserHierarchyGroup": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Team 1",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "SupportDepartmentContactUserHierarchyGroup",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+  },
+}
+`;
+
+exports[`AmazonConnectContentStack > Matches the snapshot > Not create hierarchy 1`] = `
+{
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "HoursOfOperation": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 17,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 9,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Business Hour",
+        "TimeZone": "UTC",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;

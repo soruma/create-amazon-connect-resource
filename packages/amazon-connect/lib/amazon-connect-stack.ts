@@ -3,7 +3,6 @@ import * as s3 from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 
 import { AmazonConnectConstruct, IdentityManagementType } from './amazon-connect-construct';
-import { AmazonConnectContentConstruct } from './amazon-connect-content-construct';
 
 interface AmazonConnectStackProps extends cdk.StackProps {
   /**
@@ -45,16 +44,6 @@ interface AmazonConnectStackProps extends cdk.StackProps {
    * The identifier for the directory.
    */
   directoryId?: string;
-
-  /**
-   * Create sample Amazon Connect organization hierarchies
-   */
-  createHierarchy: boolean;
-
-  /**
-   * business hours time zone
-   */
-  businessHoursTimeZone: string;
 }
 
 export class AmazonConnectStack extends cdk.Stack {
@@ -85,14 +74,8 @@ export class AmazonConnectStack extends cdk.Stack {
       dataStorageBucket,
     });
 
-    new AmazonConnectContentConstruct(this, 'AmazonConnectContentConstruct', {
-      connectInstanceArn: amazonConnect.connectInstance.attrArn,
-      createHierarchy: props.createHierarchy,
-      businessHoursTimeZone: this.props.businessHoursTimeZone,
-    });
-
-    new cdk.CfnOutput(this, 'AmazonConnectInstanceARN', {
-      exportName: `AmazonConnectInstanceARN-${this.props.connectInstanceAlias}`,
+    new cdk.CfnOutput(this, 'AmazonConnectInstanceArn', {
+      exportName: `AmazonConnectInstanceArn-${this.props.connectInstanceAlias}`,
       value: amazonConnect.connectInstance.attrArn,
     });
   }

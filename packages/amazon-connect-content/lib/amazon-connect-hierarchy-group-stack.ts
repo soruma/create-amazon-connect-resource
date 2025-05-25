@@ -2,17 +2,17 @@ import * as cdk from 'aws-cdk-lib';
 import * as connect from 'aws-cdk-lib/aws-connect';
 import { Construct } from 'constructs';
 
-interface AmazonConnectContentHierarchyGroupProps {
+interface AmazonConnectHierarchyGroupProps {
   /**
    * Amazon Connect instance ARN
    */
   connectInstanceArn: string;
 }
 
-export class AmazonConnectContentHierarchyGroupStack extends cdk.NestedStack {
-  private props: AmazonConnectContentHierarchyGroupProps;
+export class AmazonConnectHierarchyGroupStack extends cdk.NestedStack {
+  private props: AmazonConnectHierarchyGroupProps;
 
-  constructor(scope: Construct, id: string, props: AmazonConnectContentHierarchyGroupProps) {
+  constructor(scope: Construct, id: string, props: AmazonConnectHierarchyGroupProps) {
     super(scope, id);
 
     this.props = props;

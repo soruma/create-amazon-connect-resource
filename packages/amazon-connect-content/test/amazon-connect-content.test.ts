@@ -22,7 +22,7 @@ describe('AmazonConnectContentStack', () => {
         },
         connectInstanceArn: 'arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000',
         createHierarchy: true,
-        businessHoursTimeZone: 'UTC'
+        businessHoursTimeZone: 'UTC',
       });
 
       const template = Template.fromStack(stack);
@@ -47,7 +47,7 @@ describe('AmazonConnectContentStack', () => {
         },
         connectInstanceArn: 'arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000',
         createHierarchy: false,
-        businessHoursTimeZone: 'UTC'
+        businessHoursTimeZone: 'UTC',
       });
 
       const template = Template.fromStack(stack);

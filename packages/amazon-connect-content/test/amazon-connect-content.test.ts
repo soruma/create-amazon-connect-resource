@@ -28,9 +28,13 @@ describe('AmazonConnectContentStack', () => {
       const template = Template.fromStack(stack);
       expect(template.toJSON()).toMatchSnapshot();
 
-      stack.node.children
-        .filter((child) => child instanceof AmazonConnectHierarchyGroupStack)
-        .forEach((child) => expect(Template.fromStack(child as AmazonConnectHierarchyGroupStack).toJSON()).toMatchSnapshot());
+      const hierarchyGroupStackNodes = stack.node.children.filter(
+        (child) => child instanceof AmazonConnectHierarchyGroupStack,
+      );
+
+      for (const child of hierarchyGroupStackNodes) {
+        expect(Template.fromStack(child as AmazonConnectHierarchyGroupStack).toJSON()).toMatchSnapshot();
+      }
     });
 
     test('Not create hierarchy', () => {

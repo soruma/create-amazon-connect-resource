@@ -1,27 +1,46 @@
 # Amazon Connect content stack
 
-This is a blank project for CDK development with TypeScript.
+A TypeScript AWS CDK application for provisioning Amazon Connect resources.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This project uses the CDK Toolkit to synthesize and deploy a CloudFormation stack that:
+
+- Configures business hours for your Connect instance  
+- Optionally creates sample agent hierarchy groups  
+
+## Prerequisites
+
+- Node.js ≥ 16
+- AWS credentials configured (e.g. `~/.aws/credentials`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`)
+- AWS CDK CLI installed (`pnpm install -g aws-cdk`)
+
+## Setup
+
+```shell
+cd packages/amazon-connect
+pnpm install
+```
 
 ## Useful commands
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the vitest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+- `pnpm run build` Compile TypeScript
+- `pnpm run watch` Watch src/ and recompile on changes
+- `pnpm run test` Run unit tests (Vitest)
+- `npx cdk synth` Emit the synthesized CloudFormation template
+- `npx cdk diff` Compare deployed stack with loca
+- `npx cdk deploy` Deploy the stack to your AWS account
 
 ## Context parameters
 
-- `businessHoursTimeZone` (String) Deault: `UTC`
-  - Business hours time zone
-- `createHierarchy` (Boolean) Default: `false`
-  - Create sample Amazon Connect organization hierarchies
+Set these in cdk.json or via CLI -c flags:
 
-## Create Amazon Connect resources
+- `businessHoursTimeZone` (String)
+  - Deault: `UTC`
+  - Time zone for business hours schedules
+- `createHierarchy` (Boolean)
+  - Default: `false`
+  - When `true`, deploys sample hierarchy groups
 
-- Business hours
-  - The business hours configuration file is `config/business_hours.json`
-- Hierarchy group (optional)
+## Configuration Files
+
+- `config/business_hours.json` – Define your Connect business hours
+- `config/hierarchy.json` – (Optional) Define hierarchy group structure

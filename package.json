@@ -10,6 +10,7 @@
     "amazon-connect": "pnpm --filter amazon-connect",
     "amazon-connect-content": "pnpm --filter amazon-connect-content",
     "get-cdk-context-parameter": "pnpm --filter get-cdk-context-parameter",
+    "update-agent-status": "pnpm --filter update-agent-status",
     "cleanup-generated-files": "ts-node bin/cleanup-generated-files.ts"
   },
   "keywords": ["amazon", "amazon connect", "cdk"],
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.15.30",
     "glob": "^11.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",

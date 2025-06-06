@@ -1,45 +1,62 @@
 # Amazon Connect stack
 
-This is a blank project for CDK development with TypeScript.
+A TypeScript AWS CDK application for provisioning Amazon Connect resources and related infrastructure.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Prerequisites
+
+- Node.js ≥ 16
+- AWS CDK CLI (`npm install -g aws-cdk`)
+- AWS credentials configured (e.g. `~/.aws/credentials`, or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` environment variables)
+
+## Setup
+
+```bash
+cd packages/amazon-connect
+pnpm install
+```
 
 ## Useful commands
 
-* `pnpm build`   compile typescript to js
-* `pnpm watch`   watch for changes and compile
-* `pnpm test`    perform the jest unit tests
-* `pnpm run cdk deploy --context connectInstanceAlias=<amazon-connect-instanch-name> --context createHierarchy=true`  deploy this stack to your default AWS account/region
-* `pnpm run cdk diff`    compare deployed stack with current state
-* `pnpm run cdk synth`   emits the synthesized CloudFormation template
+- `pnpm run build` Compile TypeScript sources to dist/
+- `pnpm run watch` Watch files and recompile on change
+- `pnpm run test` Run unit tests (Vitest)
+- `npx cdk synth` Emit the CloudFormation template
+- `npx cdk diff` Compare deployed stack with your local changes
+- `npx cdk deploy` Deploy the stack to AWS
+- `npx cdk destroy` Tear down the deployed stack
 
-## Context parameters
+## CDK Context Parameters
 
-- `connectInstanceAlias` (String) **Required**
-  - Amazon Connect instance alias
-  - S3 Bucket name
-- `inboundCalls` (Boolean) Default: `true`
-  - Allow inbound Calls
-- `outboundCalls` (Boolean) Default: `true`
-  - Allow outbound Calls
-- `contactflowLogs` (Boolean) Default: `true`
-  - Outputs contact flow logs
-- `autoResolveBestVoices` (Boolean) Default: `true`
-  - Boolean flag which enables AUTO_RESOLVE_BEST_VOICES
-- `identityManagementType` (String) Default: `CONNECT_MANAGED`
-  - Identity management type(`SAML` | `CONNECT_MANAGED` | `EXISTING_DIRECTORY`)
-- `directoryId` (String)
-  - Required if `identityManagementType` is `EXISTING_DIRECTORY`, format: `d-0000000000`
-- `createDataStorageBucket` (Boolean) Default: `true`
-  - Whether to store call and chat records in storage
+| Key                     | Type    | Default         | Description                                                                    |
+| ----------------------- | ------- | --------------- | ------------------------------------------------------------------------------ |
+| connectInstanceAlias    | String  | — (required)    | Alias of an existing Amazon Connect instance                                   |
+| inboundCalls            | Boolean | true            | Enable inbound calling                                                         |
+| outboundCalls           | Boolean | true            | Enable outbound calling                                                        |
+| contactflowLogs         | Boolean | true            | Enable contact flow logging                                                    |
+| autoResolveBestVoices   | Boolean | true            | Auto–resolve best TTS voices                                                   |
+| identityManagementType  | String  | CONNECT_MANAGED | One of `CONNECT_MANAGED` / `SAML` / `EXISTING_DIRECTORY`                       |
+| directoryId             | String  | —               | If `identityManagementType` is `EXISTING_DIRECTORY`, specify your Directory ID |
+| createDataStorageBucket | Boolean | true            | Create an S3 bucket for call/chat recordings                                   |
 
-## Create resources
+## Resources Deployed
 
-- Amazon Connect
-  - Instance name is `${connectInstanceAlias}`
-  - Business hours
-    - The business hours configuration file is `config/business_hours.json`
-  - Hierarchy group (optional)
-- S3 Bucket
-  - Bucket name is `amazon-connect-${connectInstanceAlias}`
-    - If `createDataStorageBucket` is `false`, it will not be create
+1. **Amazon Connect Configuration**
+  - Business hours as per business_hours.json
+  - Agent hierarchy (if hierarchy.json is present)
+2. **S3 Bucket** (optional)
+  - Name: `amazon-connect-${connectInstanceAlias}`
+  - Created only if `createDataStorageBucket` is `true`
+
+## Example Deployment
+
+```shell
+cd packages/amazon-connect
+npx cdk deploy \
+  --context connectInstanceAlias=my-connect-alias \
+  --context inboundCalls=true \
+  --context outboundCalls=true \
+  --context contactflowLogs=true \
+  --context autoResolveBestVoices=true \
+  --context identityManagementType=CONNECT_MANAGED \
+  --context createDataStorageBucket=true
+```

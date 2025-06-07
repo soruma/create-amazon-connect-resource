@@ -49,6 +49,12 @@ The Connect instance’s alias (used if you don’t know the ID).
 `--offline-description <DESC>`
 (Optional) Description for the “Offline” status.
 
+`--region <REGION>`
+(Optional) The AWS region for the Amazon Connect instance.
+
+`--profile <PROFILE>`
+(Optional) The AWS profile to use for the AWS CLI.
+
 `-h`, `--help`
 Show help information.
 

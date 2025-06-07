@@ -20,6 +20,7 @@ describe('UpdateAgentStatus', () => {
     offlineName: 'Offline',
     offlineDescription: 'Offline Desc',
     credentials: expect.any(Function),
+    region: 'us-east-1',
   };
 
   let sendMock: MockInstance;

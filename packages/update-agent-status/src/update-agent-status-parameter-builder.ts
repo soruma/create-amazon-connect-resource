@@ -36,6 +36,11 @@ export interface UpdateAgentStatusParameter {
    * The credentials used for AWS authentication.
    */
   credentials: AwsCredentialIdentityProvider;
+
+  /**
+   * Retrieves the region configuration for the AWS Connect instance.
+   */
+  region: string;
 }
 
 /**
@@ -77,7 +82,34 @@ export class UpdateAgentStatusParameterBuilder {
       offlineName,
       offlineDescription,
       credentials: this.credentials,
+      region: this.getRegion(),
     };
+  }
+
+  /**
+   * Retrieves AWS credentials for authenticating API requests.
+   * @returns A promise that resolves to an AwsCredentialIdentityProvider containing the AWS credentials.
+   */
+  private async getCredentials(): Promise<AwsCredentialIdentityProvider> {
+    try {
+      const credentials = fromEnv();
+
+      // Check credentials
+      const client = new STSClient({ credentials, region: this.getRegion() });
+      await client.send(new GetCallerIdentityCommand());
+
+      return credentials;
+    } catch {
+      return fromIni({ profile: this.options.profile });
+    }
+  }
+
+  /**
+   * Retrieves the region configuration for the AWS Connect instance.
+   * @returns region
+   */
+  private getRegion(): string {
+    return this.options.region;
   }
 
   /**
@@ -103,29 +135,11 @@ export class UpdateAgentStatusParameterBuilder {
   }
 
   /**
-   * Retrieves AWS credentials for authenticating API requests.
-   * @returns A promise that resolves to an AwsCredentialIdentityProvider containing the AWS credentials.
-   */
-  private async getCredentials(): Promise<AwsCredentialIdentityProvider> {
-    try {
-      const credentials = fromEnv();
-
-      // Check credentials
-      const client = new STSClient({ credentials });
-      await client.send(new GetCallerIdentityCommand());
-
-      return credentials;
-    } catch {
-      return fromIni({ profile: this.options.profile });
-    }
-  }
-
-  /**
    * Validates the Connect instance ID or searches for it using the instance alias.
    * @returns The ID of the Connect instance if found, otherwise undefined.
    */
   private async searchConnectInstanceId(): Promise<string | undefined> {
-    const client = new ConnectClient({ credentials: this.credentials });
+    const client = new ConnectClient({ credentials: this.credentials, region: this.getRegion() });
     const output = await client.send(new ListInstancesCommand());
 
     const instanceSummaryList = (() => {

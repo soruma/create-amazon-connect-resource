@@ -27,7 +27,7 @@ pnpm install
 
 ## CDK Context Parameters
 
-| Key                     | Type    | Default         | Description                                                                    |
+| Parameter Name          | Type    | Default         | Description                                                                    |
 | ----------------------- | ------- | --------------- | ------------------------------------------------------------------------------ |
 | connectInstanceAlias    | String  | — (required)    | Alias of an existing Amazon Connect instance                                   |
 | inboundCalls            | Boolean | true            | Enable inbound calling                                                         |
@@ -40,14 +40,15 @@ pnpm install
 
 ## Resources Deployed
 
-1. **Amazon Connect Configuration**
-  - Business hours as per business_hours.json
-  - Agent hierarchy (if hierarchy.json is present)
-2. **S3 Bucket** (optional)
-  - Name: `amazon-connect-${connectInstanceAlias}`
-  - Created only if `createDataStorageBucket` is `true`
+| Resource Type            | Description                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------- |
+| `AWS::Connect::Instance` | The Amazon Connect instance itself                                            |
+| `AWS::S3::Bucket`        | S3 bucket for call and chat recordings (if `createDataStorageBucket` is true) |
+| `AWS::IAM::Role`         | IAM roles for Amazon Connect integrations and permissions                     |
 
 ## Example Deployment
+
+To deploy this stack, run the following commands:
 
 ```shell
 cd packages/amazon-connect

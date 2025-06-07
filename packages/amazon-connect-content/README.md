@@ -4,8 +4,8 @@ A TypeScript AWS CDK application for provisioning Amazon Connect resources.
 
 This project uses the CDK Toolkit to synthesize and deploy a CloudFormation stack that:
 
-- Configures business hours for your Connect instance  
-- Optionally creates sample agent hierarchy groups  
+- Configures business hours for your Amazon Connect instance
+- Optionally creates sample agent hierarchy groups
 
 ## Prerequisites
 
@@ -29,18 +29,36 @@ pnpm install
 - `npx cdk diff` Compare deployed stack with loca
 - `npx cdk deploy` Deploy the stack to your AWS account
 
-## Context parameters
-
-Set these in cdk.json or via CLI -c flags:
-
-- `businessHoursTimeZone` (String)
-  - Deault: `UTC`
-  - Time zone for business hours schedules
-- `createHierarchy` (Boolean)
-  - Default: `false`
-  - When `true`, deploys sample hierarchy groups
-
 ## Configuration Files
 
-- `config/business_hours.json` – Define your Connect business hours
+- `config/business-hours.json` – Define your Connect business hours
 - `config/hierarchy.json` – (Optional) Define hierarchy group structure
+
+## Context parameters
+
+| Parameter Name        | Type    | Default      | Description                                  |
+| --------------------- | ------- | ------------ | -------------------------------------------- |
+| connectInstanceAlias  | String  | - (required) | Alias of an existing Amazon Connect instance |
+| businessHoursTimeZone | String  | UTC          | Time zone for business hours                 |
+| createHierarchy       | Boolean | `false`      | Whether to create user hierarchy groups      |
+
+## Resources Deployed
+
+This stack deploys the following AWS resources:
+
+| Resource Type                        | Description                                                                                 |
+|--------------------------------------|---------------------------------------------------------------------------------------------|
+| AWS::Connect::HoursOfOperation       | Configures business hours for your Amazon Connect instance                                   |
+| AWS::Connect::UserHierarchyGroup     | Creates user hierarchy groups (Division, Department, Team) if `createHierarchy` is enabled   |
+
+## Example Deployment
+
+To deploy this stack, run the following commands:
+
+```shell
+cd packages/amazon-connect-content
+npx cdk deploy \
+  --context connectInstanceAlias=my-connect \
+  --context businessHoursTimeZone=Asia/Tokyo \
+  --context createHierarchy=true
+```

@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Sales Division",
+    "children": [
+      {
+        "name": "Domestic Department",
+        "children": [{ "name": "Team A" }, { "name": "Team B" }]
+      },
+      {
+        "name": "International Department",
+        "children": [{ "name": "Team C" }, { "name": "Team D" }, { "name": "Team E" }]
+      }
+    ]
+  },
+  {
+    "name": "Support Division",
+    "children": [
+      {
+        "name": "Technical Department",
+        "children": [{ "name": "Team F" }]
+      },
+      {
+        "name": "Customer Department",
+        "children": [{ "name": "Team G" }, { "name": "Team H" }]
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "levelOne": {
+    "name": "Division",
+    "hierarchyLevelId": "division"
+  },
+  "levelTwo": {
+    "name": "Department",
+    "hierarchyLevelId": "department"
+  },
+  "levelThree": {
+    "name": "Team",
+    "hierarchyLevelId": "team"
+  }
+  // "levelFour": {
+  //   "name": "LevelFour",
+  //   "hierarchyLevelId": "levelFour"
+  // },
+  // "levelFive": {
+  //   "name": "LevelFive",
+  //   "hierarchyLevelId": "levelFive"
+  // }
+}

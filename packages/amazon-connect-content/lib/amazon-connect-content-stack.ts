@@ -3,6 +3,7 @@ import * as path from 'node:path';
 import * as cdk from 'aws-cdk-lib';
 import * as connect from 'aws-cdk-lib/aws-connect';
 import { Construct } from 'constructs';
+import { parse as JSONCParse } from 'jsonc-parser';
 
 import { AmazonConnectHierarchyGroupStack } from './amazon-connect-hierarchy-group-stack';
 
@@ -39,28 +40,25 @@ export class AmazonConnectContentStack extends cdk.Stack {
   }
 
   createBusinessHours(): connect.CfnHoursOfOperation {
-    const data = readFileSync(path.join(__dirname, '..', 'config', 'business_hours.json'), { encoding: 'utf8' });
-    const config = JSON.parse(data) as connect.CfnHoursOfOperation.HoursOfOperationConfigProperty[];
+    const data = readFileSync(path.join(__dirname, '..', 'config', 'business-hours.jsonc'), { encoding: 'utf8' });
+    const config = JSONCParse(data) as connect.CfnHoursOfOperation.HoursOfOperationConfigProperty[];
 
     return new connect.CfnHoursOfOperation(this, 'HoursOfOperation', {
       instanceArn: this.props.connectInstanceArn,
-      name: 'Business Hour',
+      name: 'Business Hours',
+      description: 'Standard business hours for operations',
       config,
       timeZone: this.props.businessHoursTimeZone,
     });
   }
 
   createHierarchy() {
+    const data = readFileSync(path.join(__dirname, '..', 'config', 'hierarchy-structure.jsonc'), { encoding: 'utf8' });
+    const userHierarchyStructure = JSONCParse(data) as connect.CfnUserHierarchyStructure.UserHierarchyStructureProperty;
+
     new connect.CfnUserHierarchyStructure(this, 'DepartmentUserHierarchyStructure', {
       instanceArn: this.props.connectInstanceArn,
-      userHierarchyStructure: {
-        levelOne: {
-          name: 'Department',
-        },
-        levelTwo: {
-          name: 'Team',
-        },
-      },
+      userHierarchyStructure,
     });
 
     new AmazonConnectHierarchyGroupStack(this, 'AmazonConnectHierarchyGroupStack', {

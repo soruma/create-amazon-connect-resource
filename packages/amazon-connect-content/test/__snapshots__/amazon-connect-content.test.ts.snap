@@ -21,7 +21,7 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 1`]
               {
                 "Ref": "AWS::URLSuffix",
               },
-              "/cdk-hnb659fds-assets-000000000000-us-east-1/96a200d3577889dc7d22cac29489c89c73dd4d713b2df3ad8e111f4f36675ae4.json",
+              "/cdk-hnb659fds-assets-000000000000-us-east-1/f4c7192531e2169c783120481af23169ff2567236f1d9551c00ccb6f2ba5bce0.json",
             ],
           ],
         },
@@ -34,10 +34,16 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 1`]
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
         "UserHierarchyStructure": {
           "LevelOne": {
-            "Name": "Department",
+            "HierarchyLevelId": "division",
+            "Name": "Division",
+          },
+          "LevelThree": {
+            "HierarchyLevelId": "team",
+            "Name": "Team",
           },
           "LevelTwo": {
-            "Name": "Team",
+            "HierarchyLevelId": "department",
+            "Name": "Department",
           },
         },
       },
@@ -102,8 +108,9 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 1`]
             },
           },
         ],
+        "Description": "Standard business hours for operations",
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
-        "Name": "Business Hour",
+        "Name": "Business Hours",
         "TimeZone": "UTC",
       },
       "Type": "AWS::Connect::HoursOfOperation",
@@ -142,53 +149,170 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 1`]
 exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 2`] = `
 {
   "Resources": {
-    "SalesDepartmentContactUserHierarchyGroup": {
+    "Root0SalesDivision": {
       "Properties": {
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
-        "Name": "Sales department",
+        "Name": "Sales Division",
       },
       "Type": "AWS::Connect::UserHierarchyGroup",
     },
-    "SalesDepartmentTeam1ContactUserHierarchyGroup": {
+    "Root0SalesDivision0DomesticDepartment": {
       "Properties": {
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
-        "Name": "Team 1",
+        "Name": "Domestic Department",
         "ParentGroupArn": {
           "Fn::GetAtt": [
-            "SalesDepartmentContactUserHierarchyGroup",
+            "Root0SalesDivision",
             "UserHierarchyGroupArn",
           ],
         },
       },
       "Type": "AWS::Connect::UserHierarchyGroup",
     },
-    "SalesDepartmentTeam2ContactUserHierarchyGroup": {
+    "Root0SalesDivision0DomesticDepartment0TeamA": {
       "Properties": {
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
-        "Name": "Team 2",
+        "Name": "Team A",
         "ParentGroupArn": {
           "Fn::GetAtt": [
-            "SalesDepartmentContactUserHierarchyGroup",
+            "Root0SalesDivision0DomesticDepartment",
             "UserHierarchyGroupArn",
           ],
         },
       },
       "Type": "AWS::Connect::UserHierarchyGroup",
     },
-    "SupportDepartmentContactUserHierarchyGroup": {
+    "Root0SalesDivision0DomesticDepartment1TeamB": {
       "Properties": {
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
-        "Name": "Support department",
+        "Name": "Team B",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "Root0SalesDivision0DomesticDepartment",
+            "UserHierarchyGroupArn",
+          ],
+        },
       },
       "Type": "AWS::Connect::UserHierarchyGroup",
     },
-    "SupportDepartmentTeam1ContactUserHierarchyGroup": {
+    "Root0SalesDivision1InternationalDepartment": {
       "Properties": {
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
-        "Name": "Team 1",
+        "Name": "International Department",
         "ParentGroupArn": {
           "Fn::GetAtt": [
-            "SupportDepartmentContactUserHierarchyGroup",
+            "Root0SalesDivision",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "Root0SalesDivision1InternationalDepartment0TeamC": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Team C",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "Root0SalesDivision1InternationalDepartment",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "Root0SalesDivision1InternationalDepartment1TeamD": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Team D",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "Root0SalesDivision1InternationalDepartment",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "Root0SalesDivision1InternationalDepartment2TeamE": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Team E",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "Root0SalesDivision1InternationalDepartment",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "Root1SupportDivision": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Support Division",
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "Root1SupportDivision0TechnicalDepartment": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Technical Department",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "Root1SupportDivision",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "Root1SupportDivision0TechnicalDepartment0TeamF": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Team F",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "Root1SupportDivision0TechnicalDepartment",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "Root1SupportDivision1CustomerDepartment": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Customer Department",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "Root1SupportDivision",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "Root1SupportDivision1CustomerDepartment0TeamG": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Team G",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "Root1SupportDivision1CustomerDepartment",
+            "UserHierarchyGroupArn",
+          ],
+        },
+      },
+      "Type": "AWS::Connect::UserHierarchyGroup",
+    },
+    "Root1SupportDivision1CustomerDepartment1TeamH": {
+      "Properties": {
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "Team H",
+        "ParentGroupArn": {
+          "Fn::GetAtt": [
+            "Root1SupportDivision1CustomerDepartment",
             "UserHierarchyGroupArn",
           ],
         },
@@ -268,8 +392,9 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Not create hierarchy
             },
           },
         ],
+        "Description": "Standard business hours for operations",
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
-        "Name": "Business Hour",
+        "Name": "Business Hours",
         "TimeZone": "UTC",
       },
       "Type": "AWS::Connect::HoursOfOperation",

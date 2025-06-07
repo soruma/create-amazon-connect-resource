@@ -21,7 +21,7 @@ export class UpdateAgentStatus {
    */
   constructor(parameter: UpdateAgentStatusParameter) {
     this.parameter = parameter;
-    this.client = new ConnectClient();
+    this.client = new ConnectClient({ credentials: parameter.credentials });
   }
 
   /**

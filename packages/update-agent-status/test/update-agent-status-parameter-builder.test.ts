@@ -31,6 +31,7 @@ describe('UpdateAgentStatusParameterBuilder', () => {
       routableDescription: 'User can take calls',
       offlineName: 'Offline',
       offlineDescription: 'User is not available',
+      credentials: expect.any(Function),
     });
     expect(sendMock).not.toHaveBeenCalled();
   });

@@ -19,6 +19,7 @@ describe('UpdateAgentStatus', () => {
     routableDescription: 'Routable Desc',
     offlineName: 'Offline',
     offlineDescription: 'Offline Desc',
+    credentials: expect.any(Function),
   };
 
   let sendMock: MockInstance;

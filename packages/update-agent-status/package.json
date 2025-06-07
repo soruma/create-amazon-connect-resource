@@ -13,6 +13,11 @@
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
     "@aws-sdk/client-connect": "^3.825.0",
+    "@aws-sdk/client-sts": "^3.826.0",
+    "@aws-sdk/credential-providers": "^3.826.0",
     "cac": "^6.7.14"
+  },
+  "devDependencies": {
+    "@aws-sdk/types": "^3.821.0"
   }
 }

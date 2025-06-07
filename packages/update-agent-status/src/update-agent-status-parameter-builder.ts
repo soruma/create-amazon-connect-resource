@@ -1,4 +1,7 @@
 import { ConnectClient, ListInstancesCommand } from '@aws-sdk/client-connect';
+import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
+import { fromEnv, fromIni } from '@aws-sdk/credential-providers';
+import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
 /**
  * Defines the structure for storing agent status update parameters.
@@ -9,6 +12,7 @@ export interface UpdateAgentStatusParameter {
   routableDescription: string;
   offlineName: string;
   offlineDescription: string;
+  credentials: AwsCredentialIdentityProvider;
 }
 
 /**
@@ -18,6 +22,7 @@ export interface UpdateAgentStatusParameter {
  */
 export class UpdateAgentStatusParameterBuilder {
   private options: { [k: string]: string };
+  private credentials: AwsCredentialIdentityProvider;
 
   /**
    * Initializes the builder with the provided options.
@@ -32,6 +37,7 @@ export class UpdateAgentStatusParameterBuilder {
    * @returns An UpdateAgentStatusParameter object containing validated instance and status information.
    */
   async build(): Promise<UpdateAgentStatusParameter> {
+    this.credentials = await this.getCredentials();
     const [validInstance, instanceId] = await this.validationConnectInstance();
     if (!validInstance) {
       throw new Error('Invalid Connect instance.');
@@ -47,6 +53,7 @@ export class UpdateAgentStatusParameterBuilder {
       routableDescription,
       offlineName,
       offlineDescription,
+      credentials: this.credentials,
     };
   }
 
@@ -73,11 +80,29 @@ export class UpdateAgentStatusParameterBuilder {
   }
 
   /**
+   * Retrieves AWS credentials for authenticating API requests.
+   * @returns A promise that resolves to an AwsCredentialIdentityProvider containing the AWS credentials.
+   */
+  private async getCredentials(): Promise<AwsCredentialIdentityProvider> {
+    try {
+      const credentials = fromEnv();
+
+      // Check credentials
+      const client = new STSClient({ credentials });
+      await client.send(new GetCallerIdentityCommand());
+
+      return credentials;
+    } catch {
+      return fromIni({ profile: this.options.profile });
+    }
+  }
+
+  /**
    * Validates the Connect instance ID or searches for it using the instance alias.
    * @returns The ID of the Connect instance if found, otherwise undefined.
    */
   private async searchConnectInstanceId(): Promise<string | undefined> {
-    const client = new ConnectClient();
+    const client = new ConnectClient({ credentials: this.credentials });
     const output = await client.send(new ListInstancesCommand());
 
     const instanceSummaryList = (() => {

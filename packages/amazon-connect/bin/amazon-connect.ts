@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
+
 import { getBooleanContext, getStringContext } from 'get-cdk-context-parameter';
 import { IdentityManagementType } from '../lib/amazon-connect-construct';
 import { AmazonConnectStack } from '../lib/amazon-connect-stack';
@@ -14,6 +15,9 @@ const inboundCalls = getBooleanContext(app, 'inboundCalls', { default: true });
 const outboundCalls = getBooleanContext(app, 'outboundCalls', { default: true });
 const contactflowLogs = getBooleanContext(app, 'contactflowLogs', { default: true });
 const autoResolveBestVoices = getBooleanContext(app, 'autoResolveBestVoices', { default: true });
+const contactLens = getBooleanContext(app, 'contactLens', { default: true });
+const earlyMedia = getBooleanContext(app, 'earlyMedia', { default: true });
+
 const identityManagementType = getStringContext(app, 'identityManagementType', {
   default: 'CONNECT_MANAGED',
 }) as IdentityManagementType;
@@ -29,10 +33,14 @@ new AmazonConnectStack(app, `AmazonConnectStack-${connectInstanceAlias}`, {
     region: process.env.CDK_DEFAULT_REGION,
   },
   connectInstanceAlias,
-  inboundCalls,
-  outboundCalls,
-  contactflowLogs,
-  autoResolveBestVoices,
+  attributes: {
+    inboundCalls,
+    outboundCalls,
+    contactflowLogs,
+    autoResolveBestVoices,
+    contactLens,
+    earlyMedia,
+  },
   identityManagementType,
   directoryId,
   createDataStorageBucket,

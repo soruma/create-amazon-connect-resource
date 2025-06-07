@@ -13,24 +13,9 @@ interface AmazonConnectConstructProps {
   connectInstanceAlias: string;
 
   /**
-   * Mandatory element which enables inbound calls on new instance.
+   * This is a preview release for Amazon Connect.
    */
-  inboundCalls: boolean;
-
-  /**
-   * Mandatory element which enables outbound calls on new instance.
-   */
-  outboundCalls: boolean;
-
-  /**
-   * Boolean flag which enables CONTACTFLOW_LOGS on an instance.
-   */
-  contactflowLogs: boolean;
-
-  /**
-   * Boolean flag which enables AUTO_RESOLVE_BEST_VOICES on an instance.
-   */
-  autoResolveBestVoices: boolean;
+  attributes: connect.CfnInstance.AttributesProperty;
 
   /**
    * The identity management type.
@@ -58,12 +43,7 @@ export class AmazonConnectConstruct extends Construct {
     this.props = props;
 
     this.connectInstance = new connect.CfnInstance(this, id, {
-      attributes: {
-        inboundCalls: this.props.inboundCalls,
-        outboundCalls: this.props.outboundCalls,
-        contactflowLogs: this.props.contactflowLogs,
-        autoResolveBestVoices: this.props.autoResolveBestVoices,
-      },
+      attributes: this.props.attributes,
       identityManagementType: this.props.identityManagementType,
       instanceAlias: this.props.connectInstanceAlias,
       directoryId: this.props.directoryId,

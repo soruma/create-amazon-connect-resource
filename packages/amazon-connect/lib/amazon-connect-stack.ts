@@ -1,4 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
+import * as connect from 'aws-cdk-lib/aws-connect';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 
@@ -16,24 +17,9 @@ interface AmazonConnectStackProps extends cdk.StackProps {
   createDataStorageBucket: boolean;
 
   /**
-   * Mandatory element which enables inbound calls on new instance.
+   * This is a preview release for Amazon Connect.
    */
-  inboundCalls: boolean;
-
-  /**
-   * Mandatory element which enables outbound calls on new instance.
-   */
-  outboundCalls: boolean;
-
-  /**
-   * Boolean flag which enables CONTACTFLOW_LOGS on an instance.
-   */
-  contactflowLogs: boolean;
-
-  /**
-   * Boolean flag which enables AUTO_RESOLVE_BEST_VOICES on an instance.
-   */
-  autoResolveBestVoices: boolean;
+  attributes: connect.CfnInstance.AttributesProperty;
 
   /**
    * The identity management type.
@@ -65,10 +51,7 @@ export class AmazonConnectStack extends cdk.Stack {
 
     const amazonConnect = new AmazonConnectConstruct(this, 'AmazonConnectConstruct', {
       connectInstanceAlias: this.props.connectInstanceAlias,
-      inboundCalls: this.props.inboundCalls,
-      outboundCalls: this.props.outboundCalls,
-      contactflowLogs: this.props.contactflowLogs,
-      autoResolveBestVoices: this.props.autoResolveBestVoices,
+      attributes: this.props.attributes,
       identityManagementType: this.props.identityManagementType,
       directoryId: this.props.directoryId,
       dataStorageBucket,

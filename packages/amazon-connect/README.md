@@ -27,16 +27,18 @@ pnpm install
 
 ## CDK Context Parameters
 
-| Parameter Name          | Type    | Default         | Description                                                                    |
-| ----------------------- | ------- | --------------- | ------------------------------------------------------------------------------ |
-| connectInstanceAlias    | String  | — (required)    | Alias of an existing Amazon Connect instance                                   |
-| inboundCalls            | Boolean | true            | Enable inbound calling                                                         |
-| outboundCalls           | Boolean | true            | Enable outbound calling                                                        |
-| contactflowLogs         | Boolean | true            | Enable contact flow logging                                                    |
-| autoResolveBestVoices   | Boolean | true            | Auto–resolve best TTS voices                                                   |
-| identityManagementType  | String  | CONNECT_MANAGED | One of `CONNECT_MANAGED` / `SAML` / `EXISTING_DIRECTORY`                       |
-| directoryId             | String  | —               | If `identityManagementType` is `EXISTING_DIRECTORY`, specify your Directory ID |
-| createDataStorageBucket | Boolean | true            | Create an S3 bucket for call/chat recordings                                   |
+| Parameter Name          | Type    | Default         | Description                                                                                          |
+| ----------------------- | ------- | --------------- | ---------------------------------------------------------------------------------------------------- |
+| connectInstanceAlias    | String  | — (required)    | Alias of an existing Amazon Connect instance                                                         |
+| inboundCalls            | Boolean | true            | Enable inbound calling                                                                               |
+| outboundCalls           | Boolean | true            | Enable outbound calling                                                                              |
+| contactflowLogs         | Boolean | true            | Enable contact flow logging                                                                          |
+| autoResolveBestVoices   | Boolean | true            | Auto–resolve best TTS voices                                                                         |
+| contactLens             | Boolean | true            | Enable contact lens functionality                                                                    |
+| earlyMedia              | Boolean | true            | Enable early media functionality, Agents can know when a call is in progress or a number is changed. |
+| identityManagementType  | String  | CONNECT_MANAGED | One of `CONNECT_MANAGED` / `SAML` / `EXISTING_DIRECTORY`                                             |
+| directoryId             | String  | —               | If `identityManagementType` is `EXISTING_DIRECTORY`, specify your Directory ID                       |
+| createDataStorageBucket | Boolean | true            | Create an S3 bucket for call/chat recordings                                                         |
 
 ## Resources Deployed
 

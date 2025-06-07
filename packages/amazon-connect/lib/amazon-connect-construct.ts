@@ -76,6 +76,9 @@ export class AmazonConnectConstruct extends Construct {
     }
   }
 
+  /**
+   * Retrieves the storage configuration for call recordings and chat transcripts.
+   */
   createInstanceStorageConfig() {
     if (this.props.dataStorageBucket === undefined) return;
 

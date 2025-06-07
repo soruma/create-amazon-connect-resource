@@ -39,11 +39,14 @@ export class AmazonConnectContentStack extends cdk.Stack {
     }
   }
 
-  createBusinessHours(): connect.CfnHoursOfOperation {
+  /**
+   * Creates a hierarchy group in Amazon Connect.
+   */
+  createBusinessHours() {
     const data = readFileSync(path.join(__dirname, '..', 'config', 'business-hours.jsonc'), { encoding: 'utf8' });
     const config = JSONCParse(data) as connect.CfnHoursOfOperation.HoursOfOperationConfigProperty[];
 
-    return new connect.CfnHoursOfOperation(this, 'HoursOfOperation', {
+    new connect.CfnHoursOfOperation(this, 'HoursOfOperation', {
       instanceArn: this.props.connectInstanceArn,
       name: 'Business Hours',
       description: 'Standard business hours for operations',
@@ -52,6 +55,9 @@ export class AmazonConnectContentStack extends cdk.Stack {
     });
   }
 
+  /**
+   * Creates a hierarchy group in Amazon Connect.
+   */
   createHierarchy() {
     const data = readFileSync(path.join(__dirname, '..', 'config', 'hierarchy-structure.jsonc'), { encoding: 'utf8' });
     const userHierarchyStructure = JSONCParse(data) as connect.CfnUserHierarchyStructure.UserHierarchyStructureProperty;

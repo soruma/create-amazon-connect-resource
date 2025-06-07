@@ -7,11 +7,34 @@ import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
  * Defines the structure for storing agent status update parameters.
  */
 export interface UpdateAgentStatusParameter {
+  /**
+   * Amazon Connect instance ID.
+   */
   instanceId: string;
+
+  /**
+   * The name used for routing the agent's status.
+   */
   routableName: string;
+
+  /**
+   * The description of the agent's status for routing purposes.
+   */
   routableDescription: string;
+
+  /**
+   * The name used when the agent is offline.
+   */
   offlineName: string;
+
+  /**
+   * The description of the agent's status when they are offline.
+   */
   offlineDescription: string;
+
+  /**
+   * The credentials used for AWS authentication.
+   */
   credentials: AwsCredentialIdentityProvider;
 }
 

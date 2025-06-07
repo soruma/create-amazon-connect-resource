@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from 'vitest';
 import type { Construct } from 'constructs';
+import { describe, expect, it, vi } from 'vitest';
 
 import { getBooleanContext } from '../lib/get-boolean-context';
 
@@ -37,7 +37,6 @@ describe('getBooleanContext', () => {
       node: { tryGetContext: vi.fn().mockReturnValue(undefined) },
     } as unknown as Construct;
 
-    expect(() => getBooleanContext(fakeApp, 'mandatoryFlag'))
-      .toThrowError('The mandatoryFlag is required');
+    expect(() => getBooleanContext(fakeApp, 'mandatoryFlag')).toThrowError('The mandatoryFlag is required');
   });
 });

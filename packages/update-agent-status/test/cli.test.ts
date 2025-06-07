@@ -1,4 +1,4 @@
-import { describe, it, expect, afterEach } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { CliBuilder } from '../src/cli';
 
 describe('CliBuilder', () => {
@@ -62,14 +62,7 @@ describe('CliBuilder', () => {
   });
 
   it('captures positional arguments before flags', () => {
-    process.argv = [
-      'node',
-      'update-agent-status',
-      'firstPos',
-      'secondPos',
-      '--instance-id',
-      'i-456',
-    ];
+    process.argv = ['node', 'update-agent-status', 'firstPos', 'secondPos', '--instance-id', 'i-456'];
     const { args, options } = new CliBuilder().build();
 
     expect(args).toEqual(['firstPos', 'secondPos']);

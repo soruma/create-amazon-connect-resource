@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from 'vitest';
 import type { Construct } from 'constructs';
+import { describe, expect, it, vi } from 'vitest';
 import { getStringContext } from '../lib/get-string-context';
 
 describe('getStringContext', () => {
@@ -38,7 +38,6 @@ describe('getStringContext', () => {
       node: { tryGetContext: vi.fn().mockReturnValue(undefined) },
     } as unknown as Construct;
 
-    expect(() => getStringContext(fakeApp, 'requiredKey'))
-      .toThrowError('The requiredKey is required');
+    expect(() => getStringContext(fakeApp, 'requiredKey')).toThrowError('The requiredKey is required');
   });
 });

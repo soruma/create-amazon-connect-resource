@@ -17,11 +17,36 @@ interface AmazonConnectContentStackProps extends cdk.StackProps {
    * Create sample Amazon Connect organization hierarchies
    */
   createHierarchy: boolean;
+}
+
+/**
+ * Configuration for hours of operation
+ */
+interface HoursOfOperationConfig {
+  /**
+   * Hours of operation id
+   */
+  readonly id: string;
 
   /**
-   * business hours time zone
+   * Hours of operation name
    */
-  businessHoursTimeZone: string;
+  readonly name: string;
+
+  /**
+   * Hours of operation description
+   */
+  readonly description: string;
+
+  /**
+   * Hours of operation timezone
+   */
+  readonly timeZone: string;
+
+  /**
+   * Hours of operation configuration
+   */
+  readonly config: connect.CfnHoursOfOperation.HoursOfOperationConfigProperty[];
 }
 
 export class AmazonConnectContentStack extends cdk.Stack {
@@ -32,7 +57,7 @@ export class AmazonConnectContentStack extends cdk.Stack {
 
     this.props = props;
 
-    this.createBusinessHours();
+    this.createHoursOfOperation();
 
     if (this.props.createHierarchy) {
       this.createHierarchy();
@@ -40,19 +65,18 @@ export class AmazonConnectContentStack extends cdk.Stack {
   }
 
   /**
-   * Creates a hierarchy group in Amazon Connect.
+   * Creates hours of operation resources based on the provided configuration
    */
-  createBusinessHours() {
-    const data = readFileSync(path.join(__dirname, '..', 'config', 'business-hours.jsonc'), { encoding: 'utf8' });
-    const config = JSONCParse(data) as connect.CfnHoursOfOperation.HoursOfOperationConfigProperty[];
+  createHoursOfOperation() {
+    const data = readFileSync(path.join(__dirname, '..', 'config', 'hours-of-operations.jsonc'), { encoding: 'utf8' });
+    const configs = JSONCParse(data) as HoursOfOperationConfig[];
 
-    new connect.CfnHoursOfOperation(this, 'HoursOfOperation', {
-      instanceArn: this.props.connectInstanceArn,
-      name: 'Business Hours',
-      description: 'Standard business hours for operations',
-      config,
-      timeZone: this.props.businessHoursTimeZone,
-    });
+    for (const config of configs) {
+      new connect.CfnHoursOfOperation(this, `HoursOfOperation${config.id}`, {
+        instanceArn: this.props.connectInstanceArn,
+        ...config,
+      });
+    }
   }
 
   /**

@@ -49,7 +49,205 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 1`]
       },
       "Type": "AWS::Connect::UserHierarchyStructure",
     },
-    "HoursOfOperation": {
+    "HoursOfOperationapactokyosales": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "Description": "Sales department hours (Japan Tokyo)",
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "APAC Tokyo Sales Business Hours",
+        "TimeZone": "Asia/Tokyo",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "HoursOfOperationeucentralsales": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "Description": "Sales department hours (EU Central)",
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Sales Business Hours",
+        "TimeZone": "Europe/Berlin",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "HoursOfOperationeucentralsupport": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "Description": "Support department hours (EU Central)",
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Support Business Hours",
+        "TimeZone": "Europe/Berlin",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "HoursOfOperationuseastsales": {
       "Properties": {
         "Config": [
           {
@@ -108,10 +306,76 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 1`]
             },
           },
         ],
-        "Description": "Standard business hours for operations",
+        "Description": "Sales department hours (US East)",
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
-        "Name": "Business Hours",
-        "TimeZone": "UTC",
+        "Name": "US East Sales Business Hours",
+        "TimeZone": "America/New_York",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "HoursOfOperationuseastsupport": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "Description": "Support department hours (US East)",
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "US East Support Business Hours",
+        "TimeZone": "America/New_York",
       },
       "Type": "AWS::Connect::HoursOfOperation",
     },
@@ -333,7 +597,205 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Not create hierarchy
     },
   },
   "Resources": {
-    "HoursOfOperation": {
+    "HoursOfOperationapactokyosales": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 18,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 10,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "Description": "Sales department hours (Japan Tokyo)",
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "APAC Tokyo Sales Business Hours",
+        "TimeZone": "Asia/Tokyo",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "HoursOfOperationeucentralsales": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 16,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "Description": "Sales department hours (EU Central)",
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Sales Business Hours",
+        "TimeZone": "Europe/Berlin",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "HoursOfOperationeucentralsupport": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 19,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 7,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "Description": "Support department hours (EU Central)",
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Support Business Hours",
+        "TimeZone": "Europe/Berlin",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "HoursOfOperationuseastsales": {
       "Properties": {
         "Config": [
           {
@@ -392,10 +854,76 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Not create hierarchy
             },
           },
         ],
-        "Description": "Standard business hours for operations",
+        "Description": "Sales department hours (US East)",
         "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
-        "Name": "Business Hours",
-        "TimeZone": "UTC",
+        "Name": "US East Sales Business Hours",
+        "TimeZone": "America/New_York",
+      },
+      "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "HoursOfOperationuseastsupport": {
+      "Properties": {
+        "Config": [
+          {
+            "Day": "MONDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "TUESDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "WEDNESDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "THURSDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+          {
+            "Day": "FRIDAY",
+            "EndTime": {
+              "Hours": 20,
+              "Minutes": 0,
+            },
+            "StartTime": {
+              "Hours": 8,
+              "Minutes": 0,
+            },
+          },
+        ],
+        "Description": "Support department hours (US East)",
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "US East Support Business Hours",
+        "TimeZone": "America/New_York",
       },
       "Type": "AWS::Connect::HoursOfOperation",
     },

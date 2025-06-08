@@ -6,7 +6,6 @@ import { AmazonConnectContentStack } from '../lib/amazon-connect-content-stack';
 const app = new cdk.App();
 
 const connectInstanceAlias = getStringContext(app, 'connectInstanceAlias');
-const businessHoursTimeZone = getStringContext(app, 'businessHoursTimeZone', { default: 'UTC' });
 const createHierarchy = getBooleanContext(app, 'createHierarchy', { default: false });
 
 if (connectInstanceAlias === undefined) {
@@ -21,6 +20,5 @@ new AmazonConnectContentStack(app, 'AmazonConnectContentStack', {
     region: process.env.CDK_DEFAULT_REGION,
   },
   connectInstanceArn,
-  businessHoursTimeZone,
   createHierarchy,
 });

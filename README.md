@@ -6,7 +6,7 @@ A monorepo containing tools and infrastructure code for provisioning and managin
 
 1. **amazon-connect**
    A TypeScript AWS CDK application that provisions and configures an Amazon Connect instance, including:
-   - Business hours schedules
+   - Hours of operation schedules
    - Optional agent hierarchy groups
    - Optional S3 bucket for call/chat recordings
 
@@ -56,9 +56,21 @@ npx cdk synth
 # Deploy to AWS (example context flags)
 npx cdk deploy \
   --context connectInstanceAlias=your-alias \
-  --context businessHoursTimeZone=UTC \
-  --context createHierarchy=false \
   --context createDataStorageBucket=true
+```
+
+### amazon-connect-content
+
+```shell
+cd packages/amazon-connect-content
+
+# Synthesize CloudFormation template
+npx cdk synth
+
+# Deploy to AWS (example context flags)
+npx cdk deploy \
+  --context connectInstanceAlias=your-alias \
+  --context createHierarchy=false \
 ```
 
 ### update-agent-status

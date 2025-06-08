@@ -1,0 +1,67 @@
+[
+  {
+    "id": "us-east-sales",
+    "name": "US East Sales Business Hours",
+    "description": "Sales department hours (US East)",
+    "timeZone": "America/New_York",
+    "config": [
+      { "day": "MONDAY", "startTime": { "hours": 9, "minutes": 0 }, "endTime": { "hours": 17, "minutes": 0 } },
+      { "day": "TUESDAY", "startTime": { "hours": 9, "minutes": 0 }, "endTime": { "hours": 17, "minutes": 0 } },
+      { "day": "WEDNESDAY", "startTime": { "hours": 9, "minutes": 0 }, "endTime": { "hours": 17, "minutes": 0 } },
+      { "day": "THURSDAY", "startTime": { "hours": 9, "minutes": 0 }, "endTime": { "hours": 17, "minutes": 0 } },
+      { "day": "FRIDAY", "startTime": { "hours": 9, "minutes": 0 }, "endTime": { "hours": 17, "minutes": 0 } }
+    ]
+  },
+  {
+    "id": "us-east-support",
+    "name": "US East Support Business Hours",
+    "description": "Support department hours (US East)",
+    "timeZone": "America/New_York",
+    "config": [
+      { "day": "MONDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 20, "minutes": 0 } },
+      { "day": "TUESDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 20, "minutes": 0 } },
+      { "day": "WEDNESDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 20, "minutes": 0 } },
+      { "day": "THURSDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 20, "minutes": 0 } },
+      { "day": "FRIDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 20, "minutes": 0 } }
+    ]
+  },
+  {
+    "id": "eu-central-sales",
+    "name": "EU Central Sales Business Hours",
+    "description": "Sales department hours (EU Central)",
+    "timeZone": "Europe/Berlin",
+    "config": [
+      { "day": "MONDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 16, "minutes": 0 } },
+      { "day": "TUESDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 16, "minutes": 0 } },
+      { "day": "WEDNESDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 16, "minutes": 0 } },
+      { "day": "THURSDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 16, "minutes": 0 } },
+      { "day": "FRIDAY", "startTime": { "hours": 8, "minutes": 0 }, "endTime": { "hours": 16, "minutes": 0 } }
+    ]
+  },
+  {
+    "id": "eu-central-support",
+    "name": "EU Central Support Business Hours",
+    "description": "Support department hours (EU Central)",
+    "timeZone": "Europe/Berlin",
+    "config": [
+      { "day": "MONDAY", "startTime": { "hours": 7, "minutes": 0 }, "endTime": { "hours": 19, "minutes": 0 } },
+      { "day": "TUESDAY", "startTime": { "hours": 7, "minutes": 0 }, "endTime": { "hours": 19, "minutes": 0 } },
+      { "day": "WEDNESDAY", "startTime": { "hours": 7, "minutes": 0 }, "endTime": { "hours": 19, "minutes": 0 } },
+      { "day": "THURSDAY", "startTime": { "hours": 7, "minutes": 0 }, "endTime": { "hours": 19, "minutes": 0 } },
+      { "day": "FRIDAY", "startTime": { "hours": 7, "minutes": 0 }, "endTime": { "hours": 19, "minutes": 0 } }
+    ]
+  },
+  {
+    "id": "apac-tokyo-sales",
+    "name": "APAC Tokyo Sales Business Hours",
+    "description": "Sales department hours (Japan Tokyo)",
+    "timeZone": "Asia/Tokyo",
+    "config": [
+      { "day": "MONDAY", "startTime": { "hours": 10, "minutes": 0 }, "endTime": { "hours": 18, "minutes": 0 } },
+      { "day": "TUESDAY", "startTime": { "hours": 10, "minutes": 0 }, "endTime": { "hours": 18, "minutes": 0 } },
+      { "day": "WEDNESDAY", "startTime": { "hours": 10, "minutes": 0 }, "endTime": { "hours": 18, "minutes": 0 } },
+      { "day": "THURSDAY", "startTime": { "hours": 10, "minutes": 0 }, "endTime": { "hours": 18, "minutes": 0 } },
+      { "day": "FRIDAY", "startTime": { "hours": 10, "minutes": 0 }, "endTime": { "hours": 18, "minutes": 0 } }
+    ]
+  }
+]

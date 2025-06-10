@@ -51,10 +51,6 @@ importers:
       get-cdk-context-parameter:
         specifier: workspace:^
         version: link:../get-cdk-context-parameter
-    devDependencies:
-      aws-cdk:
-        specifier: 2.178.2
-        version: 2.178.2
 
   packages/amazon-connect-content:
     dependencies:
@@ -64,10 +60,6 @@ importers:
       jsonc-parser:
         specifier: ^3.3.1
         version: 3.3.1
-    devDependencies:
-      aws-cdk:
-        specifier: 2.1016.1
-        version: 2.1016.1
 
   packages/get-cdk-context-parameter:
     dependencies:
@@ -893,19 +885,9 @@ packages:
       - yaml
       - mime-types
 
-  aws-cdk@2.1016.1:
-    resolution: {integrity: sha512-248TBiluT8jHUjkpzvWJOHv2fS+An9fiII3eji8H7jwfTu5yMBk7on4B/AVNr9A1GXJk9I32qf9Q0A3rLWRYPQ==}
-    engines: {node: '>= 14.15.0'}
-    hasBin: true
-
   aws-cdk@2.1018.0:
     resolution: {integrity: sha512-sppVsNtFJTW4wawS/PBudHCSNHb8xwaZ2WX1mpsfwaPNyTWm0eSUVJsRbRiRBu9O/Us8pgrd4woUjfM1lgD7Kw==}
     engines: {node: '>= 18.0.0'}
-    hasBin: true
-
-  aws-cdk@2.178.2:
-    resolution: {integrity: sha512-ojMCMnBGinvDUD6+BOOlUOB9pjsYXoQdFVbf4bvi3dy3nwn557r0j6qDUcJMeikzPJ6YWzfAdL0fYxBZg4xcOg==}
-    engines: {node: '>= 14.15.0'}
     hasBin: true
 
   balanced-match@1.0.2:
@@ -2493,15 +2475,7 @@ snapshots:
       '@aws-cdk/cloud-assembly-schema': 44.2.0
       constructs: 10.4.2
 
-  aws-cdk@2.1016.1:
-    optionalDependencies:
-      fsevents: 2.3.2
-
   aws-cdk@2.1018.0:
-    optionalDependencies:
-      fsevents: 2.3.2
-
-  aws-cdk@2.178.2:
     optionalDependencies:
       fsevents: 2.3.2
 

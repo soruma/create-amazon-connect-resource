@@ -6,7 +6,7 @@
     "useIgnoreFile": false
   },
   "files": {
-    "ignore": ["cdk.out", "*.js", "*.d.ts"]
+    "ignore": ["cdk.out", "*.css", "*.js", "*.d.ts"]
   },
   "linter": {
     "enabled": true,

@@ -6,5 +6,8 @@ export default defineConfig({
     environment: 'node',
     exclude: ['node_modules/**', '**/*.{d.ts,js}'],
     workspace: ['packages/**/vitest.config.ts'],
+    coverage: {
+      reporter: ['text', 'json', 'html'],
+    },
   },
 });

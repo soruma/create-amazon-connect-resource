@@ -379,6 +379,104 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Create hierarchy 1`]
       },
       "Type": "AWS::Connect::HoursOfOperation",
     },
+    "Queuequeueapactokyosales": {
+      "Properties": {
+        "Description": "Inbound sales calls for Japan (Tokyo)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationapactokyosales",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "APAC Tokyo Sales Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueeucentralsales": {
+      "Properties": {
+        "Description": "Inbound sales calls for EU Central region",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationeucentralsales",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Sales Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueeucentralsupportother": {
+      "Properties": {
+        "Description": "Inbound support calls for other inquiries (EU Central)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationeucentralsupport",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Support Other Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueeucentralsupportproductinfo": {
+      "Properties": {
+        "Description": "Inbound support calls for product information (EU Central)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationeucentralsupport",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Support Product Info Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueuseastsales": {
+      "Properties": {
+        "Description": "Inbound sales calls for US East region",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationuseastsales",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "US East Sales Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueuseastsupportother": {
+      "Properties": {
+        "Description": "Inbound support calls for other inquiries (US East)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationuseastsupport",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "US East Support Other Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueuseastsupportproductinfo": {
+      "Properties": {
+        "Description": "Inbound support calls for product information (US East)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationuseastsupport",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "US East Support Product Info Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
   },
   "Rules": {
     "CheckBootstrapVersion": {
@@ -926,6 +1024,104 @@ exports[`AmazonConnectContentStack > Matches the snapshot > Not create hierarchy
         "TimeZone": "America/New_York",
       },
       "Type": "AWS::Connect::HoursOfOperation",
+    },
+    "Queuequeueapactokyosales": {
+      "Properties": {
+        "Description": "Inbound sales calls for Japan (Tokyo)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationapactokyosales",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "APAC Tokyo Sales Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueeucentralsales": {
+      "Properties": {
+        "Description": "Inbound sales calls for EU Central region",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationeucentralsales",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Sales Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueeucentralsupportother": {
+      "Properties": {
+        "Description": "Inbound support calls for other inquiries (EU Central)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationeucentralsupport",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Support Other Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueeucentralsupportproductinfo": {
+      "Properties": {
+        "Description": "Inbound support calls for product information (EU Central)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationeucentralsupport",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "EU Central Support Product Info Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueuseastsales": {
+      "Properties": {
+        "Description": "Inbound sales calls for US East region",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationuseastsales",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "US East Sales Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueuseastsupportother": {
+      "Properties": {
+        "Description": "Inbound support calls for other inquiries (US East)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationuseastsupport",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "US East Support Other Queue",
+      },
+      "Type": "AWS::Connect::Queue",
+    },
+    "Queuequeueuseastsupportproductinfo": {
+      "Properties": {
+        "Description": "Inbound support calls for product information (US East)",
+        "HoursOfOperationArn": {
+          "Fn::GetAtt": [
+            "HoursOfOperationuseastsupport",
+            "HoursOfOperationArn",
+          ],
+        },
+        "InstanceArn": "arn:aws:connect:us-east-1:000000000000:instance/00000000-0000-0000-0000-000000000000",
+        "Name": "US East Support Product Info Queue",
+      },
+      "Type": "AWS::Connect::Queue",
     },
   },
   "Rules": {

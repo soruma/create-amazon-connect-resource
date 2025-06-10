@@ -1,0 +1,192 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "Set the voice",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": -416.8,
+      "y": 48
+    },
+    "ActionMetadata": {
+      "Set the voice": {
+        "position": {
+          "x": -293.6,
+          "y": 47.2
+        },
+        "isFriendlyName": true,
+        "children": [
+          "Set the voice-0uHyW41gTZ"
+        ],
+        "overrideConsoleVoice": false,
+        "fragments": {
+          "SetContactData": "Set the voice-0uHyW41gTZ"
+        },
+        "overrideLanguageAttribute": true
+      },
+      "Set the voice-0uHyW41gTZ": {
+        "position": {
+          "x": -293.6,
+          "y": 47.2
+        },
+        "isFriendlyName": true,
+        "dynamicParams": []
+      },
+      "Enable log": {
+        "position": {
+          "x": -0.8,
+          "y": 52.8
+        },
+        "isFriendlyName": true
+      },
+      "d845a554-73de-42a8-af3f-29e25d32881c": {
+        "position": {
+          "x": 785.6,
+          "y": 110.4
+        }
+      },
+      "Recoding and Analysis": {
+        "position": {
+          "x": 294.4,
+          "y": 55.2
+        },
+        "isFriendlyName": true
+      },
+      "Notifies you that you are recording": {
+        "position": {
+          "x": 540.8,
+          "y": 59.2
+        },
+        "isFriendlyName": true
+      }
+    },
+    "Annotations": [],
+    "name": "Base",
+    "description": "",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "TextToSpeechVoice": "Mizuki"
+      },
+      "Identifier": "Set the voice",
+      "Type": "UpdateContactTextToSpeechVoice",
+      "Transitions": {
+        "NextAction": "Set the voice-0uHyW41gTZ",
+        "Errors": [
+          {
+            "NextAction": "Enable log",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LanguageCode": "ja-JP"
+      },
+      "Identifier": "Set the voice-0uHyW41gTZ",
+      "Type": "UpdateContactData",
+      "Transitions": {
+        "NextAction": "Enable log",
+        "Errors": [
+          {
+            "NextAction": "Enable log",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "Enable log",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "Recoding and Analysis"
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "d845a554-73de-42a8-af3f-29e25d32881c",
+      "Type": "EndFlowModuleExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "RecordingBehavior": {
+          "RecordedParticipants": [
+            "Agent",
+            "Customer"
+          ],
+          "IVRRecordingBehavior": "Enabled"
+        },
+        "AnalyticsBehavior": {
+          "Enabled": "True",
+          "AnalyticsLanguage": "ja-JP",
+          "AnalyticsRedactionBehavior": "Disabled",
+          "AnalyticsRedactionResults": "None",
+          "AnalyticsRedactionMaskMode": "EntityType",
+          "ChannelConfiguration": {
+            "Chat": {
+              "AnalyticsModes": [
+                "ContactLens"
+              ]
+            },
+            "Voice": {
+              "AnalyticsModes": [
+                "RealTime"
+              ]
+            }
+          },
+          "SummaryConfiguration": {
+            "SummaryModes": [
+              "PostContact"
+            ]
+          },
+          "SentimentConfiguration": {
+            "Enabled": "True"
+          }
+        }
+      },
+      "Identifier": "Recoding and Analysis",
+      "Type": "UpdateContactRecordingBehavior",
+      "Transitions": {
+        "NextAction": "Notifies you that you are recording"
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "サービス品質向上のため、通話内容を録音しております。"
+      },
+      "Identifier": "Notifies you that you are recording",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "d845a554-73de-42a8-af3f-29e25d32881c",
+        "Errors": [
+          {
+            "NextAction": "d845a554-73de-42a8-af3f-29e25d32881c",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ],
+  "Settings": {
+    "InputParameters": [],
+    "OutputParameters": [],
+    "Transitions": [
+      {
+        "DisplayName": "Success",
+        "ReferenceName": "Success",
+        "Description": ""
+      },
+      {
+        "DisplayName": "Error",
+        "ReferenceName": "Error",
+        "Description": ""
+      }
+    ]
+  }
+}

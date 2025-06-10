@@ -1,0 +1,151 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "Call module for Base",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 39.2,
+      "y": 36
+    },
+    "ActionMetadata": {
+      "9c4f1352-0807-4d92-b4ef-f3df9dac1b02": {
+        "position": {
+          "x": 477.6,
+          "y": 37.6
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "APAC Tokyo Sales Queue"
+          }
+        },
+        "queue": {
+          "text": "APAC Tokyo Sales Queue"
+        }
+      },
+      "b7a25732-6485-4283-acf9-90157781d4fa": {
+        "position": {
+          "x": 717.6,
+          "y": 42.4
+        },
+        "parameters": {
+          "EventHooks": {
+            "CustomerQueue": {
+              "displayName": "Default customer queue"
+            }
+          }
+        },
+        "contactFlow": {
+          "text": "Default customer queue",
+          "id": "arn:aws:connect:us-east-1:628050837857:instance/463b26f1-6dc7-448b-8c30-70c0759076cc/contact-flow/13f05f57-654c-4c62-a06d-7fd3e9767c88"
+        },
+        "customerOrAgent": true
+      },
+      "070943bd-ae7f-4152-af15-b77b82c57021": {
+        "position": {
+          "x": 976.8,
+          "y": 36
+        }
+      },
+      "7ce61865-ef88-4322-aadd-25082d1ae491": {
+        "position": {
+          "x": 1217.6,
+          "y": 54.4
+        }
+      },
+      "Call module for Base": {
+        "position": {
+          "x": 158.4,
+          "y": 35.2
+        },
+        "isFriendlyName": true,
+        "parameters": {
+          "FlowModuleId": {
+            "displayName": "Base"
+          }
+        },
+        "contactFlowModuleName": "Base"
+      }
+    },
+    "Annotations": [],
+    "name": "Queueing Asia/Tokyo",
+    "description": "",
+    "type": "contactFlow",
+    "status": "published",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:628050837857:instance/463b26f1-6dc7-448b-8c30-70c0759076cc/queue/df35fdca-95f1-4977-9253-3f6bb95a9e5c"
+      },
+      "Identifier": "9c4f1352-0807-4d92-b4ef-f3df9dac1b02",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "b7a25732-6485-4283-acf9-90157781d4fa",
+        "Errors": [
+          {
+            "NextAction": "b7a25732-6485-4283-acf9-90157781d4fa",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "EventHooks": {
+          "CustomerQueue": "arn:aws:connect:us-east-1:628050837857:instance/463b26f1-6dc7-448b-8c30-70c0759076cc/contact-flow/13f05f57-654c-4c62-a06d-7fd3e9767c88"
+        }
+      },
+      "Identifier": "b7a25732-6485-4283-acf9-90157781d4fa",
+      "Type": "UpdateContactEventHooks",
+      "Transitions": {
+        "NextAction": "070943bd-ae7f-4152-af15-b77b82c57021",
+        "Errors": [
+          {
+            "NextAction": "070943bd-ae7f-4152-af15-b77b82c57021",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "070943bd-ae7f-4152-af15-b77b82c57021",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "7ce61865-ef88-4322-aadd-25082d1ae491",
+        "Errors": [
+          {
+            "NextAction": "7ce61865-ef88-4322-aadd-25082d1ae491",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "7ce61865-ef88-4322-aadd-25082d1ae491",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "7ce61865-ef88-4322-aadd-25082d1ae491",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "FlowModuleId": "729021e8-bd2d-4b1a-bf53-3ada67a55dc4"
+      },
+      "Identifier": "Call module for Base",
+      "Type": "InvokeFlowModule",
+      "Transitions": {
+        "NextAction": "9c4f1352-0807-4d92-b4ef-f3df9dac1b02",
+        "Errors": [
+          {
+            "NextAction": "9c4f1352-0807-4d92-b4ef-f3df9dac1b02",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}

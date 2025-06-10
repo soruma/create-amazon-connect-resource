@@ -62,7 +62,7 @@ export const createQueue = (
     const queue = new CfnQueue(scope, `Queue${config.id}`, {
       instanceArn: connectInstanceArn,
       hoursOfOperationArn: hoursOfOperationConfig.hoursOfOperationArn,
-      ...config
+      ...config,
     });
     config.queueArn = queue.attrQueueArn;
   }

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "queue-us-east-sales",
+    "name": "US East Sales Queue",
+    "description": "Inbound sales calls for US East region",
+    "hoursOfOperationId": "us-east-sales"
+  },
+  {
+    "id": "queue-us-east-support-product-info",
+    "name": "US East Support Product Info Queue",
+    "description": "Inbound support calls for product information (US East)",
+    "hoursOfOperationId": "us-east-support"
+  },
+  {
+    "id": "queue-us-east-support-other",
+    "name": "US East Support Other Queue",
+    "description": "Inbound support calls for other inquiries (US East)",
+    "hoursOfOperationId": "us-east-support"
+  },
+  {
+    "id": "queue-eu-central-sales",
+    "name": "EU Central Sales Queue",
+    "description": "Inbound sales calls for EU Central region",
+    "hoursOfOperationId": "eu-central-sales"
+  },
+  {
+    "id": "queue-eu-central-support-product-info",
+    "name": "EU Central Support Product Info Queue",
+    "description": "Inbound support calls for product information (EU Central)",
+    "hoursOfOperationId": "eu-central-support"
+  },
+  {
+    "id": "queue-eu-central-support-other",
+    "name": "EU Central Support Other Queue",
+    "description": "Inbound support calls for other inquiries (EU Central)",
+    "hoursOfOperationId": "eu-central-support"
+  },
+  {
+    "id": "queue-apac-tokyo-sales",
+    "name": "APAC Tokyo Sales Queue",
+    "description": "Inbound sales calls for Japan (Tokyo)",
+    "hoursOfOperationId": "apac-tokyo-sales"
+  }
+]

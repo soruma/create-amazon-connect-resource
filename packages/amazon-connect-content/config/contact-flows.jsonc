@@ -1,0 +1,14 @@
+{
+  "modules": [
+    {
+      "id": "Base",
+      "file": "Base.json"
+    }
+  ],
+  "contact-flows": [
+    {
+      "id": "Queueing-Asia_Tokyo",
+      "file": "Queueing Asia_Tokyo.json"
+    }
+  ]
+}

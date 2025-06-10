@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { getBooleanContext, getStringContext } from 'get-cdk-context-parameter';
 import { AmazonConnectContentStack } from '../lib/amazon-connect-content-stack';

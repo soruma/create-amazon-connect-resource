@@ -13,9 +13,7 @@
           "y": 47.2
         },
         "isFriendlyName": true,
-        "children": [
-          "Set the voice-0uHyW41gTZ"
-        ],
+        "children": ["Set the voice-0uHyW41gTZ"],
         "overrideConsoleVoice": false,
         "fragments": {
           "SetContactData": "Set the voice-0uHyW41gTZ"
@@ -116,10 +114,7 @@
     {
       "Parameters": {
         "RecordingBehavior": {
-          "RecordedParticipants": [
-            "Agent",
-            "Customer"
-          ],
+          "RecordedParticipants": ["Agent", "Customer"],
           "IVRRecordingBehavior": "Enabled"
         },
         "AnalyticsBehavior": {
@@ -130,20 +125,14 @@
           "AnalyticsRedactionMaskMode": "EntityType",
           "ChannelConfiguration": {
             "Chat": {
-              "AnalyticsModes": [
-                "ContactLens"
-              ]
+              "AnalyticsModes": ["ContactLens"]
             },
             "Voice": {
-              "AnalyticsModes": [
-                "RealTime"
-              ]
+              "AnalyticsModes": ["RealTime"]
             }
           },
           "SummaryConfiguration": {
-            "SummaryModes": [
-              "PostContact"
-            ]
+            "SummaryModes": ["PostContact"]
           },
           "SentimentConfiguration": {
             "Enabled": "True"

@@ -5,7 +5,7 @@
       "file": "Base.json"
     }
   ],
-  "contact-flows": [
+  "contactFlows": [
     {
       "id": "Queueing-Asia_Tokyo",
       "file": "Queueing Asia_Tokyo.json"
